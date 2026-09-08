@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plans & Approaches | NexaVault</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* HEADER */
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(7, 16, 13, 0.78);
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+
+        .header-inner {
+            width: min(1180px, 92%);
+            height: 76px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: var(--text);
+            text-decoration: none;
+
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.6px;
+        }
+
+
+        .logo-mark {
+            width: 37px;
+            height: 37px;
+
+            border-radius: 11px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--green);
+            color: #06100c;
+
+            font-size: 17px;
+            font-weight: 900;
+
+            box-shadow:
+                0 8px 25px rgba(54, 226, 154, 0.18);
+        }
+
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+
+        .nav a {
+            color: var(--muted);
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: 500;
+
+            transition: 0.2s ease;
+        }
+
+
+        .nav a:hover,
+        .nav a.active {
+            color: var(--text);
+        }
+
+
+        .nav-actions {
+            display: flex;
+            gap: 10px;
+
+            margin-left: 8px;
+        }
+
+
+        .nav-login {
+            padding: 9px 15px;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.09);
+
+            border-radius: 8px;
+
+            color: var(--text) !important;
+        }
+
+
+        .nav-register {
+            padding: 10px 16px;
+
+            border-radius: 8px;
+
+            background: var(--green);
+
+            color: #06100c !important;
+
+            font-weight: 700 !important;
+        }
+
+
+        .nav-register:hover {
+            background: #49eaa5;
+        }
+
+
+        .menu-toggle {
+            display: none;
+
+            border: none;
+            background: transparent;
+
+            color: var(--text);
+
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+
+        /* ================================
+           PLANS PAGE
+        ================================= */
+
+        .plans-hero {
+            padding: 145px 20px 80px;
+            text-align: center;
+            background:
+                radial-gradient(circle at 50% 10%, rgba(54, 226, 154, 0.10), transparent 35%),
+                linear-gradient(to bottom, #07100d, #0b1713);
+        }
+
+        .plans-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border: 1px solid rgba(54, 226, 154, 0.25);
+            border-radius: 999px;
+            background: rgba(54, 226, 154, 0.06);
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 22px;
+        }
+
+        .plans-badge span {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        .plans-hero h1 {
+            max-width: 850px;
+            margin: 0 auto 20px;
+            font-size: clamp(38px, 6vw, 68px);
+            line-height: 1.05;
+            letter-spacing: -2.5px;
+        }
+
+        .plans-hero p {
+            max-width: 680px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .demo-notice {
+            max-width: 1050px;
+            margin: 0 auto 55px;
+            padding: 17px 20px;
+            border: 1px solid rgba(54, 226, 154, 0.18);
+            border-radius: 14px;
+            background: rgba(54, 226, 154, 0.045);
+            color: #b9cbc3;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .demo-notice strong {
+            color: var(--green);
+        }
+
+        /* Plans */
+
+        .plans-section {
+            padding: 30px 20px 100px;
+        }
+
+        .plans-container {
+            max-width: 1180px;
+            margin: auto;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            align-items: stretch;
+        }
+
+        .plan-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 34px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: linear-gradient(145deg,
+                    rgba(255, 255, 255, 0.035),
+                    rgba(255, 255, 255, 0.012));
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(54, 226, 154, 0.25);
+        }
+
+        .plan-card.popular {
+            border-color: rgba(54, 226, 154, 0.45);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+        }
+
+        .popular-label {
+            position: absolute;
+            top: -13px;
+            left: 28px;
+            padding: 6px 13px;
+            border-radius: 999px;
+            background: var(--green);
+            color: #06100c;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .plan-top {
+            margin-bottom: 28px;
+        }
+
+        .plan-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-radius: 14px;
+            background: rgba(54, 226, 154, 0.08);
+            color: var(--green);
+            font-size: 22px;
+        }
+
+        .plan-card h2 {
+            margin: 0 0 10px;
+            font-size: 25px;
+        }
+
+        .plan-description {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .plan-price {
+            padding: 22px 0;
+            margin-bottom: 25px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .plan-price small {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .price-value {
+            display: flex;
+            align-items: baseline;
+            gap: 7px;
+        }
+
+        .price-value strong {
+            font-size: 31px;
+            letter-spacing: -1px;
+        }
+
+        .price-value span {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .plan-features {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin: 0 0 30px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 11px;
+            color: #c3d0cb;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .check {
+            flex: 0 0 auto;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(54, 226, 154, 0.10);
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .plan-button {
+            width: 100%;
+            margin-top: auto;
+            padding: 14px 20px;
+            border: 1px solid rgba(54, 226, 154, 0.35);
+            border-radius: 11px;
+            background: transparent;
+            color: var(--green);
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        .plan-button:hover {
+            background: rgba(54, 226, 154, 0.08);
+        }
+
+        .popular .plan-button {
+            background: var(--green);
+            color: #06100c;
+            border-color: var(--green);
+        }
+
+        .popular .plan-button:hover {
+            background: #4eeaaa;
+        }
+
+        /* Comparison */
+
+        .comparison-section {
+            padding: 100px 20px;
+            background: #08130f;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-heading {
+            max-width: 680px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+
+        .section-heading .eyebrow {
+            margin-bottom: 12px;
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            margin: 0 0 15px;
+            font-size: clamp(29px, 4vw, 43px);
+            letter-spacing: -1.5px;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .comparison-table {
+            max-width: 1050px;
+            margin: auto;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            min-width: 700px;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 18px 22px;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            text-align: left;
+        }
+
+        .comparison-table th {
+            color: #e7efeb;
+            font-weight: 700;
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .comparison-table td {
+            color: var(--muted);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table .yes {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        /* How to choose */
+
+        .choose-section {
+            padding: 100px 20px;
+        }
+
+        .choose-grid {
+            max-width: 1050px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .choose-card {
+            padding: 28px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--card);
+        }
+
+        .choose-number {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: rgba(54, 226, 154, 0.08);
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .choose-card h3 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        .choose-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Information */
+
+        .information-section {
+            padding: 0 20px 100px;
+        }
+
+        .information-box {
+            max-width: 1050px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid rgba(255, 194, 102, 0.18);
+            border-radius: 18px;
+            background: rgba(255, 194, 102, 0.035);
+        }
+
+        .information-box h3 {
+            margin: 0 0 13px;
+            font-size: 18px;
+        }
+
+        .information-box p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .information-box strong {
+            color: #e4ebe7;
+        }
+
+        /* FAQ */
+
+        .faq-section {
+            padding: 100px 20px;
+            background: #08130f;
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 22px 0;
+            border: none;
+            background: none;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .faq-icon {
+            color: var(--green);
+            font-size: 21px;
+            transition: transform 0.2s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer p {
+            margin: 0;
+            padding: 0 0 22px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* CTA */
+
+        .plans-cta {
+            padding: 110px 20px;
+            text-align: center;
+            background:
+                radial-gradient(circle at center, rgba(54, 226, 154, 0.09), transparent 45%),
+                #07100d;
+        }
+
+        .plans-cta h2 {
+            max-width: 650px;
+            margin: 0 auto 16px;
+            font-size: clamp(30px, 4vw, 45px);
+            letter-spacing: -1.5px;
+        }
+
+        .plans-cta p {
+            max-width: 570px;
+            margin: 0 auto 30px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary,
+        .cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 150px;
+            padding: 14px 22px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        .cta-primary {
+            background: var(--green);
+            color: #06100c;
+        }
+
+        .cta-primary:hover {
+            background: #4eeaaa;
+        }
+
+        .cta-secondary {
+            border: 1px solid var(--border);
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .cta-secondary:hover {
+            border-color: rgba(54, 226, 154, 0.3);
+        }
+
+        /* Mobile */
+
+        @media (max-width: 900px) {
+            .plans-grid {
+                grid-template-columns: 1fr;
+                max-width: 620px;
+                margin: auto;
+            }
+
+            .plan-card {
+                padding: 30px;
+            }
+
+            .choose-grid {
+                grid-template-columns: 1fr;
+                max-width: 620px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .plans-hero {
+                padding-top: 120px;
+                padding-bottom: 60px;
+            }
+
+            .plans-hero h1 {
+                letter-spacing: -1.5px;
+            }
+
+            .plans-section,
+            .comparison-section,
+            .choose-section,
+            .faq-section {
+                padding-top: 70px;
+                padding-bottom: 70px;
+            }
+
+            .information-section {
+                padding-bottom: 70px;
+            }
+
+            .plan-card {
+                padding: 25px;
+                border-radius: 18px;
+            }
+
+            .demo-notice {
+                text-align: left;
+            }
+
+            .information-box {
+                padding: 24px;
+            }
+
+            .plans-cta {
+                padding: 80px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body class="page-enter">
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header class="header">
+
+        <div class="header-inner">
+
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-mark">
+                    N
+                </span>
+
+                <span>
+                    NexaVault
+                </span>
+
+            </a>
+
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+                ☰
+            </button>
+
+
+            <nav class="nav">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="markets.html">
+                    Markets
+                </a>
+
+                <a href="plans.html" class="active">
+                    Plans
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+
+                <div class="nav-actions">
+
+                    <a href="login.html" class="nav-login">
+                        Sign In
+                    </a>
+
+                    <a href="register.html" class="nav-register">
+                        Get Started
+                    </a>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================================
+         HERO
+    ================================= -->
+
+    <main>
+
+        <section class="plans-hero">
+
+            <div class="plans-badge">
+                <span></span>
+                Portfolio Approaches
+            </div>
+
+            <h1>
+                Choose an approach that fits your goals.
+            </h1>
+
+            <p>
+                Explore portfolio approaches designed to show how
+                different levels of diversification, market information and
+                portfolio tools could be organized in a digital asset platform.
+            </p>
+
+        </section>
+
+
+        <!-- ================================
+             DEMO NOTICE
+        ================================= -->
+
+        <div class="container">
+            <div class="demo-notice">
+                <strong>Demo Notice:</strong>
+                The plans, amounts and features shown on this page are
+                illustrative examples for the NexaVault website experience.
+                They are not live financial products, offers, or guarantees.
+            </div>
+        </div>
+
+
+        <!-- ================================
+             PLANS
+        ================================= -->
+
+        <section class="plans-section">
+
+            <div class="plans-container">
+
+                <div class="plans-grid">
+
+                    <!-- STARTER -->
+
+                    <article class="plan-card">
+
+                        <div class="plan-top">
+
+                            <div class="plan-icon">
+                                ◇
+                            </div>
+
+                            <h2>Starter</h2>
+
+                            <p class="plan-description">
+                                A simple starting point for exploring digital
+                                asset markets and portfolio tracking.
+                            </p>
+
+                        </div>
+
+                        <div class="plan-price">
+                            <small>Starting amount</small>
+
+                            <div class="price-value">
+                                <strong>$1900</strong>
+                                <span>illustrative</span>
+                            </div>
+                        </div>
+
+                        <ul class="plan-features">
+
+                            <li>
+                                <span class="check">✓</span>
+                                Portfolio overview
+                            </li>
+
+                            <li>
+                                <span class="check">✓</span>
+                                Market information
+                            </li>
+
+                            <li>
+                                <span class="check">✓</span>
+                                Basic allocation tools
+                            </li>
+
+                            <li>
+                                <span class="check">✓</span>
+                                Digital asset education
+                            </li>
+
+                            <li>
+                                <span class="check">✓</span>
+                                20.0% growth speed
+                            </li>
+
+                        </ul>
+
+                        <a href="register.html" class="plan-button">
+                            Explore Starter
+                        </a>
+
+                    </article>
+
+
+                    <!-- GROWTH -->
+
+                    <article class="plan-card popular">
+
+                        <div class="popular-label">
+                            Popular Example
+                        </div>
+
+                        <div class="plan-top">
+
+                            <div class="plan-icon">
+                                ◈
+                            </div>
+
+                            <h2>Growth</h2>
+
+                            <p class="plan-description">
+                                A broader approach for users who want
+                                more portfolio visibility and diversification
+                                tools.
+                            </p>
+
+                        </div>
+
+                        <div class="plan-price">
+                            <small>Starting amount</small>
+
+                            <div class="price-value">
+                                <strong>$10,000</strong>
+                                <span>illustrative</span>
+                            </div>
+                        </div>
+
+                        <ul class="plan-features">
+
+                            <li>
+                                <span class="check">✓</span>
+                                Everything in Starter
+                            </li>
+
+                            <li>
+                                <span class="check">✓</span>
+                                Expanded asset tracking
+                            </li>
+
+                            <li>
+                                <span class="check">✓</span>
+                                Allocation analytics
+                            </li>
+
+                            <li>
+                                <span class="check">✓</span>
+                                43.5% growth speed
+                            </li>
+
+                            <li>
+                                <span class="check">✓</span>
+                                Market trend information
+                            </li>
+
+                        </ul>
+
+                        <a href="register.html" class="plan-button">
+                            Explore Growth
+                        </a>
+
+                    </article>
+
+
+                    <!-- ADVANCED -->
+
+                    <article class="plan-card">
+
+                        <div class="plan-top">
+
+                            <div class="plan-icon">
+                                ◆
+                            </div>
+
+                            <h2>Advanced</h2>
+
+                            <p class="plan-description">
+                                An illustrative setup focused on deeper
+                                portfolio organization and analytics.
+                            </p>
+
+                        </div>
+
+                        <div class="plan-price">
+                            <small>Starting amount</small>
+
+                            <div class="price-value">
+                                <strong>$50,000</strong>
+                                <span>illustrative</span>
+                            </div>
+                        </div>
+
+                        <ul class="plan-features">
+
+                            <li>
+                                <span class="check">✓</span>
+                                Everything in Growth
+                            </li>
+
+                            <li>
+                                <span class="check">✓</span>
+                                68.0% growth speed
+                            </li>
+
+                            <li>
+                                <span class="check">✓</span>
+                                Detailed allocation view
+                            </li>
+
+                            <li>
+                                <span class="check">✓</span>
+                                Multi-asset monitoring
+                            </li>
+
+                            <li>
+                                <span class="check">✓</span>
+                                Expanded portfolio insights
+                            </li>
+
+                        </ul>
+
+                        <a href="register.html" class="plan-button">
+                            Explore Advanced
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             COMPARISON
+        ================================= -->
+
+        <section class="comparison-section">
+
+            <div class="section-heading">
+
+                <div class="eyebrow">
+                    Compare approaches
+                </div>
+
+                <h2>
+                    See what changes as your portfolio needs grow.
+                </h2>
+
+                <p>
+                    These examples demonstrate how a digital asset platform
+                    could organize different portfolio tools and information
+                    levels.
+                </p>
+
+            </div>
+
+
+            <div class="comparison-table">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Starter</th>
+                            <th>Growth</th>
+                            <th>Advanced</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Portfolio tracking</td>
+                            <td class="yes">✓</td>
+                            <td class="yes">✓</td>
+                            <td class="yes">✓</td>
+                        </tr>
+
+                        <tr>
+                            <td>Market information</td>
+                            <td class="yes">✓</td>
+                            <td class="yes">✓</td>
+                            <td class="yes">✓</td>
+                        </tr>
+
+                        <tr>
+                            <td>Allocation tools</td>
+                            <td class="yes">✓</td>
+                            <td class="yes">✓</td>
+                            <td class="yes">✓</td>
+                        </tr>
+
+                        <tr>
+                            <td>Asset Growth</td>
+                            <td>Basic</td>
+                            <td>Expanded</td>
+                            <td>Advanced</td>
+                        </tr>
+
+                        <tr>
+                            <td>Portfolio analytics</td>
+                            <td>Core</td>
+                            <td>Expanded</td>
+                            <td>Multi-asset</td>
+                        </tr>
+
+                        <tr>
+                            <td>Educational resources</td>
+                            <td class="yes">✓</td>
+                            <td class="yes">✓</td>
+                            <td class="yes">✓</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             HOW TO CHOOSE
+        ================================= -->
+
+        <section class="choose-section">
+
+            <div class="section-heading">
+
+                <div class="eyebrow">
+                    Getting started
+                </div>
+
+                <h2>
+                    Start with the approach that makes sense for you.
+                </h2>
+
+                <p>
+                    There is no single approach that is right for everyone.
+                    Consider your objectives, experience and tolerance for
+                    market risk.
+                </p>
+
+            </div>
+
+
+            <div class="choose-grid">
+
+                <div class="choose-card">
+
+                    <div class="choose-number">
+                        01
+                    </div>
+
+                    <h3>Understand the market</h3>
+
+                    <p>
+                        Learn how digital assets work and understand that
+                        prices can move significantly in either direction.
+                    </p>
+
+                </div>
+
+
+                <div class="choose-card">
+
+                    <div class="choose-number">
+                        02
+                    </div>
+
+                    <h3>Consider your goals</h3>
+
+                    <p>
+                        Think about what you want your portfolio tools to help
+                        you monitor and organize.
+                    </p>
+
+                </div>
+
+
+                <div class="choose-card">
+
+                    <div class="choose-number">
+                        03
+                    </div>
+
+                    <h3>Review your risk</h3>
+
+                    <p>
+                        Only consider amounts you can afford to lose and make
+                        decisions based on your own circumstances.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             IMPORTANT INFORMATION
+        ================================= -->
+
+        <section class="information-section">
+
+            <div class="information-box">
+
+                <h3>Important information</h3>
+
+                <p>
+                    <strong>Digital assets are volatile.</strong>
+                    Their value can rise or fall substantially, and past
+                    performance does not guarantee future results. The example
+                    amounts and portfolio approaches displayed by NexaVault
+                    are for interface demonstration purposes only. Nothing on
+                    this page should be interpreted as a promise of returns,
+                    financial advice, or an offer to buy or sell an asset.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             FAQ
+        ================================= -->
+
+        <section class="faq-section">
+
+            <div class="faq-container">
+
+                <div class="section-heading">
+
+                    <div class="eyebrow">
+                        FAQ
+                    </div>
+
+                    <h2>
+                        Questions about the plans?
+                    </h2>
+
+                    <p>
+                        Here are some common questions about the example
+                        approaches shown on this page.
+                    </p>
+
+                </div>
+
+
+                <div class="faq-list">
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+
+                            Are these real investment plans?
+
+                            <span class="faq-icon">+</span>
+
+                        </button>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                No. The plans displayed here are illustrative
+                                examples created to demonstrate the NexaVault
+                                website interface. They are not live financial
+                                products.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+
+                            Are returns guaranteed?
+
+                            <span class="faq-icon">+</span>
+
+                        </button>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                No. Digital asset markets can be highly
+                                volatile, and no return or profit can be
+                                guaranteed.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+
+                            Which approach should I choose?
+
+                            <span class="faq-icon">+</span>
+
+                        </button>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                There is no universal answer. Consider your
+                                financial situation, objectives, experience
+                                and ability to handle losses before making any
+                                financial decision.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+
+                            Can digital assets lose value?
+
+                            <span class="faq-icon">+</span>
+
+                        </button>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Yes. Digital assets can experience substantial
+                                price movements, including significant losses.
+                                Users should understand these risks before
+                                considering exposure to digital assets.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="faq-item">
+
+                        <button class="faq-question">
+
+                            Can I use these plans with the demo dashboard?
+
+                            <span class="faq-icon">+</span>
+
+                        </button>
+
+                        <div class="faq-answer">
+
+                            <p>
+                                Yes. The NexaVault demo dashboard can be used
+                                to explore how a portfolio interface could
+                                look. The balances and activities shown there
+                                are sample data.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             CTA
+        ================================= -->
+
+        <section class="plans-cta">
+
+            <h2>
+                Explore the NexaVault experience.
+            </h2>
+
+            <p>
+                Create an account or explore the dashboard to see
+                how the platform interface works.
+            </p>
+
+            <div class="cta-buttons">
+
+                <a href="register.html" class="cta-primary">
+                    Create Account
+                </a>
+
+                <a href="dashboard.html" class="cta-secondary">
+                    View Dashboard
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =================================
+         FOOTER
+    ================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+
+            <div class="footer-grid">
+
+
+                <div class="footer-brand">
+
+                    <a href="index.html" class="logo">
+
+                        <span class="logo-mark">
+                            N
+                        </span>
+
+                        <span>
+                            NexaVault
+                        </span>
+
+                    </a>
+
+
+                    <p>
+                        A demonstration interface for exploring
+                        digital-asset markets, portfolio tools and
+                        modern financial product design.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Platform
+                    </h4>
+
+                    <a href="markets.html">
+                        Markets
+                    </a>
+
+                    <a href="plans.html">
+                        Plans
+                    </a>
+
+                    <a href="dashboard.html">
+                        Dashboard
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Company
+                    </h4>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                    <a href="login.html">
+                        Sign In
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Account
+                    </h4>
+
+                    <a href="register.html">
+                        Create Account
+                    </a>
+
+                    <a href="login.html">
+                        Login
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 NexaVault. Demonstration interface.
+                </span>
+
+                <span>
+                    No financial services, transactions or
+                    investment products are provided.
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <style>
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        .footer {
+            border-top: 1px solid var(--border);
+
+            background: #050d0a;
+
+            padding: 55px 0 25px;
+        }
+
+
+        .footer-container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.7fr 1fr 1fr 1fr;
+
+            gap: 40px;
+
+            padding-bottom: 45px;
+        }
+
+
+        .footer-brand p {
+            max-width: 300px;
+
+            margin: 15px 0 0;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+
+        .footer-column h4 {
+            margin: 0 0 15px;
+
+            color: var(--text);
+
+            font-size: 11px;
+        }
+
+
+        .footer-column a {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: var(--muted);
+
+            text-decoration: none;
+
+            font-size: 10px;
+        }
+
+
+        .footer-column a:hover {
+            color: var(--green);
+        }
+
+
+        .footer-bottom {
+            padding-top: 22px;
+
+            border-top: 1px solid var(--border);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: #53615b;
+
+            font-size: 9px;
+        }
+    </style>
+
+
+    <!-- ================================
+         FAQ SCRIPT
+    ================================= -->
+
+    <script>
+
+        const faqQuestions =
+            document.querySelectorAll(".faq-question");
+
+        faqQuestions.forEach(question => {
+
+            question.addEventListener("click", () => {
+
+                const item = question.parentElement;
+                const answer = question.nextElementSibling;
+
+                document.querySelectorAll(".faq-item").forEach(otherItem => {
+
+                    if (otherItem !== item) {
+
+                        otherItem.classList.remove("active");
+
+                        const otherAnswer =
+                            otherItem.querySelector(".faq-answer");
+
+                        otherAnswer.style.maxHeight = null;
+
+                    }
+
+                });
+
+                item.classList.toggle("active");
+
+                if (item.classList.contains("active")) {
+
+                    answer.style.maxHeight =
+                        answer.scrollHeight + "px";
+
+                } else {
+
+                    answer.style.maxHeight = null;
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

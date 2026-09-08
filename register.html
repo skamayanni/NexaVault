@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Create Account | NexaVault</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =========================================================
+           NEXAVAULT REGISTER PAGE
+           Demonstration interface only.
+           
+           A production registration system requires:
+           - Secure server-side authentication
+           - Password hashing
+           - HTTPS
+           - Session management
+           - CSRF protection
+           - Rate limiting
+           - Email verification
+           - Secure password recovery
+           - Proper database security
+           
+           Never store real passwords in client-side JavaScript.
+           ========================================================= */
+
+        .auth-page {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 15% 15%, rgba(54, 226, 154, 0.08), transparent 28%),
+                radial-gradient(circle at 85% 80%, rgba(54, 226, 154, 0.05), transparent 30%),
+                var(--bg);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+
+        .auth-header {
+            width: 100%;
+            padding: 22px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            background: rgba(7, 16, 13, 0.82);
+            backdrop-filter: blur(18px);
+        }
+
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .auth-logo-mark {
+            width: 37px;
+            height: 37px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--green);
+            color: #06100c;
+            font-weight: 900;
+            font-size: 17px;
+            box-shadow: 0 8px 24px rgba(54, 226, 154, 0.18);
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.2s ease;
+        }
+
+        .back-home:hover {
+            color: var(--text);
+        }
+
+        /* Main */
+
+        .auth-main {
+            width: min(1080px, 92%);
+            margin: 0 auto;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 65px 0;
+        }
+
+        .register-layout {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        /* Left information panel */
+
+        .register-intro {
+            padding-right: 20px;
+        }
+
+        .demo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border: 1px solid rgba(54, 226, 154, 0.2);
+            border-radius: 999px;
+            background: rgba(54, 226, 154, 0.06);
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            margin-bottom: 20px;
+        }
+
+        .demo-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 12px rgba(54, 226, 154, 0.7);
+        }
+
+        .register-intro h1 {
+            margin: 0 0 18px;
+            color: var(--text);
+            font-size: clamp(36px, 4vw, 52px);
+            line-height: 1.08;
+            letter-spacing: -1.8px;
+        }
+
+        .register-intro h1 span {
+            color: var(--green);
+        }
+
+        .register-intro>p {
+            margin: 0;
+            max-width: 480px;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+        .benefits {
+            margin-top: 34px;
+            display: grid;
+            gap: 18px;
+        }
+
+        .benefit {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            background: rgba(54, 226, 154, 0.07);
+            border: 1px solid rgba(54, 226, 154, 0.13);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green);
+            font-size: 16px;
+        }
+
+        .benefit h3 {
+            margin: 0 0 4px;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .benefit p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        /* Register Card */
+
+        .register-card {
+            width: 100%;
+            max-width: 520px;
+            margin-left: auto;
+            padding: 34px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: rgba(13, 27, 22, 0.94);
+            box-shadow: 0 28px 80px rgba(0, 0, 0, 0.32);
+        }
+
+        .card-heading {
+            margin-bottom: 25px;
+        }
+
+        .card-heading h2 {
+            margin: 0 0 8px;
+            color: var(--text);
+            font-size: 25px;
+            letter-spacing: -0.6px;
+        }
+
+        .card-heading p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* Form */
+
+        .register-form {
+            display: grid;
+            gap: 17px;
+        }
+
+        .name-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            color: #dce7e2;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .form-control {
+            width: 100%;
+            height: 48px;
+            padding: 0 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            background: rgba(255, 255, 255, 0.035);
+            color: var(--text);
+            outline: none;
+            font-family: inherit;
+            font-size: 14px;
+            transition: 0.2s ease;
+        }
+
+        .form-control::placeholder {
+            color: #65756e;
+        }
+
+        .form-control:focus {
+            border-color: rgba(54, 226, 154, 0.55);
+            background: rgba(54, 226, 154, 0.025);
+            box-shadow: 0 0 0 3px rgba(54, 226, 154, 0.08);
+        }
+
+        .password-input {
+            padding-right: 72px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 11px;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 7px;
+        }
+
+        .password-toggle:hover {
+            color: var(--green);
+        }
+
+        /* Password strength */
+
+        .password-strength {
+            margin-top: 3px;
+        }
+
+        .strength-bars {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin-bottom: 7px;
+        }
+
+        .strength-bar {
+            height: 4px;
+            border-radius: 99px;
+            background: rgba(255, 255, 255, 0.08);
+            transition: 0.2s ease;
+        }
+
+        .strength-label {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .password-requirements {
+            margin: 7px 0 0;
+            padding: 0;
+            display: grid;
+            gap: 5px;
+            list-style: none;
+        }
+
+        .password-requirements li {
+            color: #718079;
+            font-size: 11px;
+            transition: 0.2s ease;
+        }
+
+        .password-requirements li.valid {
+            color: var(--green);
+        }
+
+        .password-requirements li::before {
+            content: "○";
+            margin-right: 7px;
+        }
+
+        .password-requirements li.valid::before {
+            content: "✓";
+        }
+
+        /* Terms */
+
+        .terms-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 2px;
+        }
+
+        .terms-row input {
+            margin-top: 3px;
+            accent-color: var(--green);
+        }
+
+        .terms-row label {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.55;
+        }
+
+        .terms-row a {
+            color: var(--green);
+            text-decoration: none;
+        }
+
+        .terms-row a:hover {
+            text-decoration: underline;
+        }
+
+        /* Error */
+
+        .form-error {
+            display: none;
+            padding: 10px 12px;
+            border: 1px solid rgba(255, 100, 100, 0.2);
+            border-radius: 9px;
+            background: rgba(255, 80, 80, 0.05);
+            color: #ff9999;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        /* Button */
+
+        .register-btn {
+            width: 100%;
+            height: 49px;
+            margin-top: 2px;
+            border: none;
+            border-radius: 10px;
+            background: var(--green);
+            color: #06100c;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 800;
+            transition: 0.2s ease;
+        }
+
+        .register-btn:hover {
+            background: #49eaa5;
+            transform: translateY(-1px);
+            box-shadow: 0 12px 30px rgba(54, 226, 154, 0.14);
+        }
+
+        /* Login link */
+
+        .login-link {
+            margin: 20px 0 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .login-link a {
+            color: var(--green);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Security note */
+
+        .security-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 24px;
+            padding: 13px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .security-icon {
+            color: var(--green);
+            font-size: 14px;
+            margin-top: 1px;
+        }
+
+        .security-note p {
+            margin: 0;
+            color: #778780;
+            font-size: 10px;
+            line-height: 1.55;
+        }
+
+        /* Footer */
+
+        .auth-footer {
+            padding: 22px 5%;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: #62716b;
+            font-size: 11px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 850px) {
+            .auth-main {
+                padding: 45px 0;
+            }
+
+            .register-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                max-width: 580px;
+            }
+
+            .register-intro {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .register-intro>p {
+                margin: 0 auto;
+            }
+
+            .benefits {
+                grid-template-columns: repeat(3, 1fr);
+                text-align: left;
+            }
+
+            .register-card {
+                margin: 0 auto;
+                max-width: 580px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .auth-header {
+                padding: 17px 5%;
+            }
+
+            .auth-logo {
+                font-size: 18px;
+            }
+
+            .auth-logo-mark {
+                width: 34px;
+                height: 34px;
+            }
+
+            .back-home {
+                font-size: 12px;
+            }
+
+            .auth-main {
+                width: 92%;
+                padding: 38px 0;
+            }
+
+            .register-intro h1 {
+                font-size: 36px;
+                letter-spacing: -1.2px;
+            }
+
+            .register-intro>p {
+                font-size: 14px;
+            }
+
+            .benefits {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                max-width: 360px;
+                margin: 28px auto 0;
+            }
+
+            .register-card {
+                padding: 24px 20px;
+                border-radius: 17px;
+            }
+
+            .name-grid {
+                grid-template-columns: 1fr;
+                gap: 17px;
+            }
+
+            .card-heading h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body class="page-enter">
+
+    <div class="auth-page">
+
+        <!-- HEADER -->
+        <header class="auth-header">
+
+            <a href="index.html" class="auth-logo">
+                <span class="auth-logo-mark">N</span>
+                <span>NexaVault</span>
+            </a>
+
+            <a href="index.html" class="back-home">
+                ← Back to home
+            </a>
+
+        </header>
+
+
+        <!-- MAIN -->
+        <main class="auth-main">
+
+            <div class="register-layout">
+
+                <!-- LEFT SIDE -->
+                <section class="register-intro">
+
+                    <div class="demo-badge">
+                        <span class="demo-dot"></span>
+                        Demonstration Environment
+                    </div>
+
+                    <h1>
+                        Start exploring<br>
+                        <span>NexaVault.</span>
+                    </h1>
+
+                    <p>
+                        Create account to explore the NexaVault
+                        portfolio experience, market tools and example
+                        digital-asset workflows.
+                    </p>
+
+
+                    <div class="benefits">
+
+                        <div class="benefit">
+
+                            <div class="benefit-icon">
+                                ◈
+                            </div>
+
+                            <div>
+                                <h3>Explore Markets</h3>
+                                <p>
+                                    Browse illustrative digital-asset
+                                    market information.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="benefit">
+
+                            <div class="benefit-icon">
+                                ↗
+                            </div>
+
+                            <div>
+                                <h3>View Your Portfolio</h3>
+                                <p>
+                                    Explore portfolio 
+                                    dashboard and allocation view.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="benefit">
+
+                            <div class="benefit-icon">
+                                ✓
+                            </div>
+
+                            <div>
+                                <h3>Learn the Interface</h3>
+                                <p>
+                                    Experience how a digital-asset
+                                    platform could be organized.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- REGISTER CARD -->
+                <section class="register-card">
+
+                    <div class="card-heading">
+
+                        <h2>Create your account</h2>
+
+                        <p>
+                            Enter the information below to access
+                            the NexaVault demonstration dashboard.
+                        </p>
+
+                    </div>
+
+
+                    <form class="register-form" id="registerForm">
+
+                        <!-- NAME -->
+                        <div class="name-grid">
+
+                            <div class="form-group">
+
+                                <label for="firstName">
+                                    First Name
+                                </label>
+
+                                <input type="text" id="firstName" class="form-control" placeholder="First name"
+                                    autocomplete="given-name" required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="lastName">
+                                    Last Name
+                                </label>
+
+                                <input type="text" id="lastName" class="form-control" placeholder="Last name"
+                                    autocomplete="family-name" required>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input type="email" id="registerEmail" class="form-control" placeholder="you@example.com"
+                                autocomplete="email" required>
+
+                        </div>
+
+
+                        <!-- PASSWORD -->
+                        <div class="form-group">
+
+                            <label for="password">
+                                Password
+                            </label>
+
+                            <div class="input-wrap">
+
+                                <input type="password" id="registerPassword" class="form-control password-input"
+                                    placeholder="Create a password" autocomplete="new-password" required>
+
+                                <button type="button" class="password-toggle" data-target="password">
+                                    Show
+                                </button>
+
+                            </div>
+
+
+                            <!-- PASSWORD STRENGTH -->
+                            <div class="password-strength">
+
+                                <div class="strength-bars">
+
+                                    <span class="strength-bar"></span>
+                                    <span class="strength-bar"></span>
+                                    <span class="strength-bar"></span>
+                                    <span class="strength-bar"></span>
+
+                                </div>
+
+                                <div class="strength-label" id="strengthLabel">
+                                    Enter a password
+                                </div>
+
+
+                                <ul class="password-requirements">
+
+                                    <li id="lengthReq">
+                                        At least 8 characters
+                                    </li>
+
+                                    <li id="upperReq">
+                                        One uppercase letter
+                                    </li>
+
+                                    <li id="lowerReq">
+                                        One lowercase letter
+                                    </li>
+
+                                    <li id="numberReq">
+                                        One number
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- CONFIRM PASSWORD -->
+                        <div class="form-group">
+
+                            <label for="confirmPassword">
+                                Confirm Password
+                            </label>
+
+                            <div class="input-wrap">
+
+                                <input type="password" id="confirmPassword" class="form-control password-input"
+                                    placeholder="Confirm your password" autocomplete="new-password" required>
+
+                                <button type="button" class="password-toggle" data-target="confirmPassword">
+                                    Show
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ERROR -->
+                        <div class="form-error" id="formError"></div>
+
+
+                        <!-- TERMS -->
+                        <div class="terms-row">
+
+                            <input type="checkbox" id="terms" required>
+
+                            <label for="terms">
+                                I understand that this is a
+                                demonstration interface
+                                and that the information displayed
+                                is illustrative.
+                            </label>
+
+                        </div>
+
+
+                        <!-- SUBMIT -->
+                        <button type="submit" class="register-btn">
+                            Create Account
+                        </button>
+
+                    </form>
+
+
+                    <div id="registerMessage" class="form-message"></div>
+
+
+                    <!-- LOGIN -->
+                    <p class="login-link">
+                        Already have a demo account?
+                        <a href="login.html">
+                            Sign in
+                        </a>
+                    </p>
+
+
+                    <!-- SECURITY -->
+                    <div class="security-note">
+
+                        <span class="security-icon">
+                            🔒
+                        </span>
+
+                        <p>
+                            For this demonstration, Never enter financial
+                            credentials, private keys, recovery phrases
+                            or authentication codes into a any site.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+
+        <!-- FOOTER -->
+        <footer class="auth-footer">
+
+            © 2026 NexaVault. Demonstration interface.
+            Not a financial service or investment product.
+
+        </footer>
+
+    </div>
+
+
+    <script>
+        /*
+         * ==========================================================
+         * NEXAVAULT DEMO REGISTRATION
+         *
+         * This JavaScript performs front-end validation only.
+         *
+         * It does NOT:
+         * - Create a real account
+         * - Store passwords
+         * - Send credentials to a server
+         * - Process financial transactions
+         *
+         * A production implementation must use secure server-side
+         * authentication and never rely on client-side validation.
+         * ==========================================================
+         */
+
+
+        const registerForm = document.getElementById("registerForm");
+
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirmPassword");
+
+        const strengthLabel = document.getElementById("strengthLabel");
+
+        const strengthBars = document.querySelectorAll(".strength-bar");
+
+        const lengthReq = document.getElementById("lengthReq");
+        const upperReq = document.getElementById("upperReq");
+        const lowerReq = document.getElementById("lowerReq");
+        const numberReq = document.getElementById("numberReq");
+
+        const formError = document.getElementById("formError");
+
+
+        /* ----------------------------------------------------------
+           PASSWORD STRENGTH
+        ---------------------------------------------------------- */
+
+        function updatePasswordStrength() {
+
+            const value = password.value;
+
+            const checks = {
+                length: value.length >= 8,
+                upper: /[A-Z]/.test(value),
+                lower: /[a-z]/.test(value),
+                number: /[0-9]/.test(value)
+            };
+
+
+            lengthReq.classList.toggle("valid", checks.length);
+            upperReq.classList.toggle("valid", checks.upper);
+            lowerReq.classList.toggle("valid", checks.lower);
+            numberReq.classList.toggle("valid", checks.number);
+
+
+            let score = Object.values(checks)
+                .filter(Boolean)
+                .length;
+
+
+            /*
+             * Add a point for longer passwords.
+             */
+            if (value.length >= 12) {
+                score = Math.min(score + 1, 4);
+            }
+
+
+            strengthBars.forEach((bar, index) => {
+
+                bar.style.background =
+                    index < score
+                        ? "var(--green)"
+                        : "rgba(255,255,255,0.08)";
+
+            });
+
+
+            if (!value) {
+
+                strengthLabel.textContent =
+                    "Enter a password";
+
+            } else if (score <= 1) {
+
+                strengthLabel.textContent =
+                    "Password strength: Weak";
+
+            } else if (score === 2) {
+
+                strengthLabel.textContent =
+                    "Password strength: Fair";
+
+            } else if (score === 3) {
+
+                strengthLabel.textContent =
+                    "Password strength: Good";
+
+            } else {
+
+                strengthLabel.textContent =
+                    "Password strength: Strong";
+
+            }
+
+        }
+
+
+        password.addEventListener(
+            "input",
+            updatePasswordStrength
+        );
+
+
+        /* ----------------------------------------------------------
+           PASSWORD VISIBILITY
+        ---------------------------------------------------------- */
+
+        document
+            .querySelectorAll(".password-toggle")
+            .forEach(button => {
+
+                button.addEventListener("click", () => {
+
+                    const targetId =
+                        button.getAttribute("data-target");
+
+                    const input =
+                        document.getElementById(targetId);
+
+
+                    if (input.type === "password") {
+
+                        input.type = "text";
+
+                        button.textContent = "Hide";
+
+                    } else {
+
+                        input.type = "password";
+
+                        button.textContent = "Show";
+
+                    }
+
+                });
+
+            });
+
+
+        /* ----------------------------------------------------------
+           FORM VALIDATION
+        ---------------------------------------------------------- */
+
+        registerForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            formError.classList.remove("show");
+            formError.textContent = "";
+
+
+            const firstName =
+                document.getElementById("firstName").value.trim();
+
+            const lastName =
+                document.getElementById("lastName").value.trim();
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const passwordValue =
+                password.value;
+
+            const confirmPasswordValue =
+                confirmPassword.value;
+
+            const terms =
+                document.getElementById("terms").checked;
+
+
+            /* Required fields */
+
+            if (
+                !firstName ||
+                !lastName ||
+                !email ||
+                !passwordValue ||
+                !confirmPasswordValue
+            ) {
+
+                showError(
+                    "Please complete all required fields."
+                );
+
+                return;
+            }
+
+
+            /* Email */
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+
+                showError(
+                    "Please enter a valid email address."
+                );
+
+                return;
+            }
+
+
+            /* Password requirements */
+
+            const validPassword =
+                passwordValue.length >= 8 &&
+                /[A-Z]/.test(passwordValue) &&
+                /[a-z]/.test(passwordValue) &&
+                /[0-9]/.test(passwordValue);
+
+
+            if (!validPassword) {
+
+                showError(
+                    "Please meet all password requirements before continuing."
+                );
+
+                return;
+            }
+
+
+            /* Password confirmation */
+
+            if (passwordValue !== confirmPasswordValue) {
+
+                showError(
+                    "The passwords do not match."
+                );
+
+                return;
+            }
+
+
+            /* Terms */
+
+            if (!terms) {
+
+                showError(
+                    "Please confirm that you understand this is a demonstration interface."
+                );
+
+                return;
+            }
+
+
+            /*
+             * Successful demonstration registration.
+             *
+             * No credentials are stored or transmitted.
+             */
+
+            window.location.href = "dashboard.html";
+
+        });
+
+
+        /* ----------------------------------------------------------
+           ERROR DISPLAY
+        ---------------------------------------------------------- */
+
+        function showError(message) {
+
+            formError.textContent = message;
+
+            formError.classList.add("show");
+
+        }
+    </script>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const form =
+                document.getElementById("registerForm");
+
+            const message =
+                document.getElementById("registerMessage");
+
+
+            if (!form) {
+                return;
+            }
+
+
+            form.addEventListener("submit", async (event) => {
+
+                event.preventDefault();
+
+
+                const firstName =
+                    document.getElementById("firstName").value.trim();
+
+                const lastName =
+                    document.getElementById("lastName").value.trim();
+
+                const email =
+                    document.getElementById("registerEmail").value.trim();
+
+                const password =
+                    document.getElementById("registerPassword").value;
+
+                const confirmPassword =
+                    document.getElementById("confirmPassword").value;
+
+                const terms =
+                    document.getElementById("terms").checked;
+
+
+                message.className =
+                    "form-message";
+
+
+                message.textContent = "";
+
+
+                /* -----------------------------------------------
+                   BASIC VALIDATION
+                ------------------------------------------------ */
+
+                if (!firstName || !lastName) {
+
+                    message.textContent =
+                        "Please enter your first and last name.";
+
+                    message.classList.add("error");
+
+                    return;
+
+                }
+
+
+                if (!email) {
+
+                    message.textContent =
+                        "Please enter your email address.";
+
+                    message.classList.add("error");
+
+                    return;
+
+                }
+
+
+                /* -----------------------------------------------
+                   PASSWORD REQUIREMENTS
+                ------------------------------------------------ */
+
+                if (password.length < 8) {
+
+                    message.textContent =
+                        "Password must contain at least 8 characters.";
+
+                    message.classList.add("error");
+
+                    return;
+
+                }
+
+
+                if (!/[A-Z]/.test(password)) {
+
+                    message.textContent =
+                        "Password must contain at least one uppercase letter.";
+
+                    message.classList.add("error");
+
+                    return;
+
+                }
+
+
+                if (!/[a-z]/.test(password)) {
+
+                    message.textContent =
+                        "Password must contain at least one lowercase letter.";
+
+                    message.classList.add("error");
+
+                    return;
+
+                }
+
+
+                if (!/[0-9]/.test(password)) {
+
+                    message.textContent =
+                        "Password must contain at least one number.";
+
+                    message.classList.add("error");
+
+                    return;
+
+                }
+
+
+                /* -----------------------------------------------
+                   CONFIRM PASSWORD
+                ------------------------------------------------ */
+
+                if (password !== confirmPassword) {
+
+                    message.textContent =
+                        "Passwords do not match.";
+
+                    message.classList.add("error");
+
+                    return;
+
+                }
+
+
+                /* -----------------------------------------------
+                   TERMS
+                ------------------------------------------------ */
+
+                if (!terms) {
+
+                    message.textContent =
+                        "Please accept the demonstration terms.";
+
+                    message.classList.add("error");
+
+                    return;
+
+                }
+
+
+                /* -----------------------------------------------
+                   REGISTER
+                ------------------------------------------------ */
+
+                const result =
+                    await NexaAuth.register(
+                        firstName,
+                        lastName,
+                        email,
+                        password
+                    );
+
+
+                if (!result.success) {
+
+                    message.textContent =
+                        result.message;
+
+                    message.classList.add("error");
+
+                    return;
+
+                }
+
+
+                message.textContent =
+                    "Demo account created successfully. Opening your dashboard...";
+
+                message.classList.add("success");
+
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        "dashboard.html";
+
+                }, 700);
+
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About NexaVault | Explore Digital Assets</title>
+
+    <meta name="description"
+        content="Learn about the NexaVault digital asset demonstration platform and its approach to portfolio and market exploration.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <style>
+        /* =========================================================
+           NEXAVAULT ABOUT PAGE
+           Demonstration interface only.
+           ========================================================= */
+
+
+        /* =========================================================
+           HEADER
+           ========================================================= */
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(7, 16, 13, 0.78);
+            backdrop-filter: blur(18px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+
+        .header-inner {
+            width: min(1180px, 92%);
+            height: 76px;
+
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: var(--text);
+            text-decoration: none;
+
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.6px;
+        }
+
+
+        .logo-mark {
+            width: 37px;
+            height: 37px;
+
+            border-radius: 11px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: var(--green);
+            color: #06100c;
+
+            font-size: 17px;
+            font-weight: 900;
+
+            box-shadow:
+                0 8px 25px rgba(54, 226, 154, 0.18);
+        }
+
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+
+        .nav a {
+            color: var(--muted);
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: 500;
+
+            transition: 0.2s ease;
+        }
+
+
+        .nav a:hover,
+        .nav a.active {
+            color: var(--text);
+        }
+
+
+        .nav-actions {
+            display: flex;
+            gap: 10px;
+
+            margin-left: 8px;
+        }
+
+
+        .nav-login {
+            padding: 9px 15px;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.09);
+
+            border-radius: 8px;
+
+            color: var(--text) !important;
+        }
+
+
+        .nav-register {
+            padding: 10px 16px;
+
+            border-radius: 8px;
+
+            background: var(--green);
+
+            color: #06100c !important;
+
+            font-weight: 700 !important;
+        }
+
+
+        .nav-register:hover {
+            background: #49eaa5;
+        }
+
+
+        .menu-toggle {
+            display: none;
+
+            border: none;
+            background: transparent;
+
+            color: var(--text);
+
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .about-hero {
+            min-height: 72vh;
+
+            position: relative;
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+
+            padding: 150px 0 90px;
+
+            background:
+                radial-gradient(circle at 75% 35%,
+                    rgba(54, 226, 154, 0.09),
+                    transparent 30%),
+                radial-gradient(circle at 15% 75%,
+                    rgba(54, 226, 154, 0.05),
+                    transparent 27%),
+                var(--bg);
+        }
+
+
+        .about-hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 520px;
+            height: 520px;
+
+            right: -240px;
+            top: 40px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(54, 226, 154, 0.07);
+
+            box-shadow:
+                0 0 0 90px rgba(54, 226, 154, 0.012),
+                0 0 0 180px rgba(54, 226, 154, 0.008);
+
+            pointer-events: none;
+        }
+
+
+        .about-hero-container {
+            width: min(1180px, 92%);
+            margin: auto;
+
+            position: relative;
+            z-index: 2;
+        }
+
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 7px 12px;
+
+            border-radius: 999px;
+
+            border:
+                1px solid rgba(54, 226, 154, 0.18);
+
+            background:
+                rgba(54, 226, 154, 0.055);
+
+            color: var(--green);
+
+            font-size: 11px;
+            font-weight: 700;
+
+            margin-bottom: 22px;
+        }
+
+
+        .hero-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--green);
+
+            box-shadow:
+                0 0 12px rgba(54, 226, 154, 0.75);
+        }
+
+
+        .about-hero h1 {
+            max-width: 780px;
+
+            margin: 0;
+
+            color: var(--text);
+
+            font-size: clamp(43px, 6vw, 70px);
+
+            line-height: 1.03;
+
+            letter-spacing: -3px;
+        }
+
+
+        .about-hero h1 span {
+            color: var(--green);
+        }
+
+
+        .about-hero p {
+            max-width: 670px;
+
+            margin: 24px 0 0;
+
+            color: var(--muted);
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================================================
+           INTRO
+           ========================================================= */
+
+        .about-section {
+            padding: 105px 0;
+        }
+
+
+        .section-container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+
+        .about-intro {
+            display: grid;
+
+            grid-template-columns:
+                0.95fr 1.05fr;
+
+            gap: 80px;
+
+            align-items: start;
+        }
+
+
+        .section-eyebrow {
+            color: var(--green);
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 1.4px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 14px;
+        }
+
+
+        .about-intro h2 {
+            margin: 0;
+
+            color: var(--text);
+
+            font-size: clamp(30px, 4vw, 45px);
+
+            line-height: 1.12;
+
+            letter-spacing: -1.7px;
+        }
+
+
+        .intro-copy p {
+            margin: 0 0 18px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            line-height: 1.85;
+        }
+
+
+        .intro-copy p:last-child {
+            margin-bottom: 0;
+        }
+
+
+        /* =========================================================
+           STATS
+           ========================================================= */
+
+        .stats-section {
+            padding: 0 0 105px;
+        }
+
+
+        .stats-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 17px;
+
+            overflow: hidden;
+
+            background: var(--card);
+        }
+
+
+        .stat-card {
+            padding: 30px 25px;
+
+            border-right:
+                1px solid var(--border);
+        }
+
+
+        .stat-card:last-child {
+            border-right: none;
+        }
+
+
+        .stat-value {
+            color: var(--green);
+
+            font-size: 29px;
+            font-weight: 800;
+
+            letter-spacing: -1px;
+        }
+
+
+        .stat-label {
+            margin-top: 7px;
+
+            color: var(--text);
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+
+        .stat-description {
+            margin-top: 5px;
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================================
+           VALUES
+           ========================================================= */
+
+        .values-section {
+            background: var(--bg-light);
+
+            border-top:
+                1px solid var(--border);
+
+            border-bottom:
+                1px solid var(--border);
+        }
+
+
+        .section-header {
+            max-width: 650px;
+
+            margin-bottom: 48px;
+        }
+
+
+        .section-header h2 {
+            margin: 0;
+
+            color: var(--text);
+
+            font-size: clamp(30px, 4vw, 44px);
+
+            line-height: 1.1;
+
+            letter-spacing: -1.7px;
+        }
+
+
+        .section-header p {
+            margin: 16px 0 0;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.75;
+        }
+
+
+        .values-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+
+        .value-card {
+            padding: 30px;
+
+            min-height: 240px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 16px;
+
+            background: var(--card);
+
+            transition: 0.25s ease;
+        }
+
+
+        .value-card:hover {
+            transform: translateY(-4px);
+
+            border-color:
+                rgba(54, 226, 154, 0.17);
+        }
+
+
+        .value-icon {
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+
+            background:
+                rgba(54, 226, 154, 0.07);
+
+            border:
+                1px solid rgba(54, 226, 154, 0.11);
+
+            color: var(--green);
+
+            font-size: 18px;
+        }
+
+
+        .value-card h3 {
+            margin: 20px 0 9px;
+
+            color: var(--text);
+
+            font-size: 17px;
+        }
+
+
+        .value-card p {
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =========================================================
+           EXPERIENCE
+           ========================================================= */
+
+        .experience-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 20px;
+        }
+
+
+        .experience-card {
+            padding: 32px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 17px;
+
+            background: var(--card);
+        }
+
+
+        .experience-card h3 {
+            margin: 0 0 10px;
+
+            color: var(--text);
+
+            font-size: 18px;
+        }
+
+
+        .experience-card>p {
+            margin: 0 0 22px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            line-height: 1.75;
+        }
+
+
+        .experience-list {
+            display: grid;
+
+            gap: 13px;
+        }
+
+
+        .experience-item {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+        }
+
+
+        .experience-check {
+            width: 21px;
+            height: 21px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 6px;
+
+            background:
+                rgba(54, 226, 154, 0.08);
+
+            color: var(--green);
+
+            font-size: 10px;
+        }
+
+
+        .experience-item span {
+            color: #a5b3ad;
+
+            font-size: 11px;
+
+            line-height: 1.55;
+        }
+
+
+        /* =========================================================
+           DEMO NOTICE
+           ========================================================= */
+
+        .notice-section {
+            padding-top: 0;
+        }
+
+
+        .notice-box {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 15px;
+
+            padding: 23px;
+
+            border:
+                1px solid rgba(54, 226, 154, 0.13);
+
+            border-radius: 14px;
+
+            background:
+                rgba(54, 226, 154, 0.035);
+        }
+
+
+        .notice-icon {
+            color: var(--green);
+
+            font-size: 17px;
+
+            margin-top: 1px;
+        }
+
+
+        .notice-box h3 {
+            margin: 0 0 5px;
+
+            color: var(--text);
+
+            font-size: 13px;
+        }
+
+
+        .notice-box p {
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            line-height: 1.65;
+        }
+
+
+        /* =========================================================
+           CTA
+           ========================================================= */
+
+        .cta-section {
+            padding: 30px 0 105px;
+        }
+
+
+        .cta-box {
+            padding: 60px 50px;
+
+            border-radius: 22px;
+
+            border:
+                1px solid rgba(54, 226, 154, 0.14);
+
+            background:
+                radial-gradient(circle at 80% 20%,
+                    rgba(54, 226, 154, 0.10),
+                    transparent 32%),
+                linear-gradient(145deg,
+                    #0d2119,
+                    #091710);
+        }
+
+
+        .cta-box h2 {
+            max-width: 650px;
+
+            margin: 0;
+
+            color: var(--text);
+
+            font-size: clamp(30px, 4vw, 44px);
+
+            line-height: 1.1;
+
+            letter-spacing: -1.7px;
+        }
+
+
+        .cta-box p {
+            max-width: 600px;
+
+            margin: 15px 0 25px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        .primary-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 48px;
+
+            padding: 0 20px;
+
+            border-radius: 9px;
+
+            background: var(--green);
+
+            color: #06100c;
+
+            text-decoration: none;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            transition: 0.2s ease;
+        }
+
+
+        .primary-btn:hover {
+            background: #49eaa5;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        .footer {
+            border-top:
+                1px solid var(--border);
+
+            background: #050d0a;
+
+            padding: 55px 0 25px;
+        }
+
+
+        .footer-container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.7fr 1fr 1fr 1fr;
+
+            gap: 40px;
+
+            padding-bottom: 45px;
+        }
+
+
+        .footer-brand p {
+            max-width: 300px;
+
+            margin: 15px 0 0;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+
+        .footer-column h4 {
+            margin: 0 0 15px;
+
+            color: var(--text);
+
+            font-size: 11px;
+        }
+
+
+        .footer-column a {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: var(--muted);
+
+            text-decoration: none;
+
+            font-size: 10px;
+        }
+
+
+        .footer-column a:hover {
+            color: var(--green);
+        }
+
+
+        .footer-bottom {
+            padding-top: 22px;
+
+            border-top:
+                1px solid var(--border);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: #53615b;
+
+            font-size: 9px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 850px) {
+
+            .about-intro {
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+            }
+
+
+            .stats-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .stat-card:nth-child(2) {
+                border-right: none;
+            }
+
+
+            .stat-card:nth-child(1),
+            .stat-card:nth-child(2) {
+                border-bottom:
+                    1px solid var(--border);
+            }
+
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 760px) {
+
+            .header-inner {
+                height: 68px;
+            }
+
+
+            .menu-toggle {
+                display: block;
+            }
+
+
+            .nav {
+                position: absolute;
+
+                top: 68px;
+                left: 0;
+
+                width: 100%;
+
+                display: none;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                gap: 0;
+
+                padding: 15px 5% 22px;
+
+                border-bottom:
+                    1px solid var(--border);
+
+                background:
+                    rgba(7, 16, 13, 0.98);
+
+                backdrop-filter: blur(18px);
+            }
+
+
+            .nav.show {
+                display: flex;
+            }
+
+
+            .nav a {
+                padding: 12px 0;
+
+                border-bottom:
+                    1px solid rgba(255, 255, 255, 0.04);
+            }
+
+
+            .nav-actions {
+                display: grid;
+
+                grid-template-columns:
+                    1fr 1fr;
+
+                margin: 10px 0 0;
+
+                gap: 10px;
+            }
+
+
+            .nav-login,
+            .nav-register {
+                text-align: center;
+            }
+
+        }
+
+
+        @media (max-width: 560px) {
+
+            .about-hero {
+                min-height: auto;
+
+                padding: 125px 0 75px;
+            }
+
+
+            .about-hero h1 {
+                font-size: 43px;
+
+                letter-spacing: -2.2px;
+            }
+
+
+            .about-hero p {
+                font-size: 14px;
+            }
+
+
+            .about-section {
+                padding: 80px 0;
+            }
+
+
+            .stats-section {
+                padding-bottom: 80px;
+            }
+
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .stat-card {
+                border-right: none !important;
+
+                border-bottom:
+                    1px solid var(--border);
+            }
+
+
+            .stat-card:last-child {
+                border-bottom: none;
+            }
+
+
+            .cta-box {
+                padding: 40px 25px;
+            }
+
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .footer-bottom {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+        }
+    </style>
+
+</head>
+
+
+<body class="page-enter">
+
+
+    <!-- =========================================================
+         HEADER
+         ========================================================= -->
+
+    <header class="header">
+
+        <div class="header-inner">
+
+
+            <a href="index.html" class="logo">
+
+                <span class="logo-mark">
+                    N
+                </span>
+
+                <span>
+                    NexaVault
+                </span>
+
+            </a>
+
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
+                ☰
+            </button>
+
+
+            <nav class="nav">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html" class="active">
+                    About
+                </a>
+
+                <a href="markets.html">
+                    Markets
+                </a>
+
+                <a href="plans.html">
+                    Plans
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+
+                <div class="nav-actions">
+
+                    <a href="login.html" class="nav-login">
+                        Sign In
+                    </a>
+
+                    <a href="register.html" class="nav-register">
+                        Get Started
+                    </a>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
+
+    <section class="about-hero">
+
+        <div class="about-hero-container">
+
+            <div class="hero-badge">
+
+                <span class="hero-dot"></span>
+
+                About NexaVault
+
+            </div>
+
+
+            <h1>
+
+                A clearer way to explore
+                <span>digital assets.</span>
+
+            </h1>
+
+
+            <p>
+
+                NexaVault is a demonstration platform concept
+                built around a simple idea: digital-asset
+                information should be organized in a way that
+                makes the overall experience easier to understand.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         INTRODUCTION
+         ========================================================= -->
+
+    <section class="about-section">
+
+        <div class="section-container">
+
+            <div class="about-intro">
+
+
+                <div>
+
+                    <div class="section-eyebrow">
+                        Our Approach
+                    </div>
+
+                    <h2>
+                        Designed around clarity,
+                        not complexity.
+                    </h2>
+
+                </div>
+
+
+                <div class="intro-copy">
+
+                    <p>
+                        The digital-asset landscape can contain
+                        large amounts of information, from market
+                        prices and asset movements to portfolio
+                        allocations and account activity.
+                    </p>
+
+
+                    <p>
+                        NexaVault brings these concepts together
+                        inside one streamlined interface. The
+                        demonstration experience allows visitors
+                        to explore how a modern platform could
+                        organize this information.
+                    </p>
+
+
+                    <p>
+                        From the Markets page to the Portfolio
+                        Dashboard, each part of the experience
+                        has been designed to work together while
+                        keeping the interface straightforward.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         STATS
+         ========================================================= -->
+
+    <section class="stats-section">
+
+        <div class="section-container">
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-value">
+                        24/7
+                    </div>
+
+                    <div class="stat-label">
+                        Designed for access
+                    </div>
+
+                    <div class="stat-description">
+                        Platform availability concept.
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-value">
+                        5+
+                    </div>
+
+                    <div class="stat-label">
+                        Assets
+                    </div>
+
+                    <div class="stat-description">
+                        Assets shown in the demonstration.
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-value">
+                        3
+                    </div>
+
+                    <div class="stat-label">
+                        Core experiences
+                    </div>
+
+                    <div class="stat-description">
+                        Markets, portfolio and account tools.
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-value">
+                        1
+                    </div>
+
+                    <div class="stat-label">
+                        Unified interface
+                    </div>
+
+                    <div class="stat-description">
+                        One connected demonstration experience.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         VALUES
+         ========================================================= -->
+
+    <section class="about-section values-section">
+
+        <div class="section-container">
+
+
+            <div class="section-header">
+
+                <div class="section-eyebrow">
+                    What Guides the Experience
+                </div>
+
+                <h2>
+                    Three principles behind NexaVault.
+                </h2>
+
+                <p>
+                    The interface is built around principles that
+                    prioritize understandable information and a
+                    straightforward user experience.
+                </p>
+
+            </div>
+
+
+            <div class="values-grid">
+
+                <article class="value-card">
+
+                    <div class="value-icon">
+                        ◎
+                    </div>
+
+                    <h3>
+                        Simplicity
+                    </h3>
+
+                    <p>
+                        Markets, portfolio information and account
+                        tools should be easy to navigate without
+                        unnecessary visual complexity.
+                    </p>
+
+                </article>
+
+
+                <article class="value-card">
+
+                    <div class="value-icon">
+                        ◇
+                    </div>
+
+                    <h3>
+                        Transparency
+                    </h3>
+
+                    <p>
+                        Information should be presented clearly,
+                        with illustrative figures identified as illustrations
+                        rather than being confused with live
+                        financial information.
+                    </p>
+
+                </article>
+
+
+                <article class="value-card">
+
+                    <div class="value-icon">
+                        ↗
+                    </div>
+
+                    <h3>
+                        Continuous Improvement
+                    </h3>
+
+                    <p>
+                        The platform concept can evolve as new
+                        interface ideas, data visualizations and
+                        portfolio experiences are explored.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         EXPERIENCE
+         ========================================================= -->
+
+    <section class="about-section">
+
+        <div class="section-container">
+
+
+            <div class="section-header">
+
+                <div class="section-eyebrow">
+                    Inside NexaVault
+                </div>
+
+                <h2>
+                    One experience. Multiple ways to explore.
+                </h2>
+
+                <p>
+                    Each section of the platform has a specific
+                    role while remaining connected to the overall
+                    NexaVault experience.
+                </p>
+
+            </div>
+
+
+            <div class="experience-grid">
+
+
+                <div class="experience-card">
+
+                    <h3>
+                        Explore the Market
+                    </h3>
+
+                    <p>
+                        The Markets experience provides an
+                        organized view of illustrative asset
+                        information.
+                    </p>
+
+
+                    <div class="experience-list">
+
+
+                        <div class="experience-item">
+
+                            <div class="experience-check">
+                                ✓
+                            </div>
+
+                            <span>
+                                Asset prices and percentage changes
+                            </span>
+
+                        </div>
+
+
+                        <div class="experience-item">
+
+                            <div class="experience-check">
+                                ✓
+                            </div>
+
+                            <span>
+                            Market capitalization data
+                            </span>
+
+                        </div>
+
+
+                        <div class="experience-item">
+
+                            <div class="experience-check">
+                                ✓
+                            </div>
+
+                            <span>
+                                Asset categories and search tools
+                            </span>
+
+                        </div>
+
+
+                        <div class="experience-item">
+
+                            <div class="experience-check">
+                                ✓
+                            </div>
+
+                            <span>
+                                Featured digital-asset overview
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="experience-card">
+
+                    <h3>
+                        Understand the Portfolio
+                    </h3>
+
+                    <p>
+                        The Dashboard demonstrates how portfolio
+                        information can be organized into a
+                        single workspace.
+                    </p>
+
+
+                    <div class="experience-list">
+
+
+                        <div class="experience-item">
+
+                            <div class="experience-check">
+                                ✓
+                            </div>
+
+                            <span>
+                            Portfolio balance
+                            </span>
+
+                        </div>
+
+
+                        <div class="experience-item">
+
+                            <div class="experience-check">
+                                ✓
+                            </div>
+
+                            <span>
+                                Allocation visualization
+                            </span>
+
+                        </div>
+
+
+                        <div class="experience-item">
+
+                            <div class="experience-check">
+                                ✓
+                            </div>
+
+                            <span>
+                                Illustrative performance tracking
+                            </span>
+
+                        </div>
+
+
+                        <div class="experience-item">
+
+                            <div class="experience-check">
+                                ✓
+                            </div>
+
+                            <span>
+                            Account activity
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         DEMO NOTICE
+         ========================================================= -->
+
+    <section class="about-section notice-section">
+
+        <div class="section-container">
+
+            <div class="notice-box">
+
+                <div class="notice-icon">
+                    ⓘ
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        About the NexaVault demonstration
+                    </h3>
+
+                    <p>
+                        NexaVault is presented here as a
+                        demonstration interface. Market prices,
+                        balances, portfolio performance,
+                        transactions and other figures displayed
+                        throughout the website are illustrative.
+                        
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         CTA
+         ========================================================= -->
+
+    <section class="cta-section">
+
+        <div class="section-container">
+
+            <div class="cta-box">
+
+                <h2>
+                    See the NexaVault experience for yourself.
+                </h2>
+
+
+                <p>
+                    Explore the markets, review the plans
+                    or open the dashboard.
+                </p>
+
+
+                <a href="markets.html" class="primary-btn">
+                    Explore Markets →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+
+            <div class="footer-grid">
+
+
+                <div class="footer-brand">
+
+                    <a href="index.html" class="logo">
+
+                        <span class="logo-mark">
+                            N
+                        </span>
+
+                        <span>
+                            NexaVault
+                        </span>
+
+                    </a>
+
+
+                    <p>
+                        A demonstration interface for exploring
+                        digital-asset markets, portfolio tools and
+                        modern financial product design.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Platform
+                    </h4>
+
+                    <a href="markets.html">
+                        Markets
+                    </a>
+
+                    <a href="plans.html">
+                        Plans
+                    </a>
+
+                    <a href="dashboard.html">
+                        Dashboard
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Company
+                    </h4>
+
+                    <a href="about.html">
+                        About
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                    <a href="login.html">
+                        Sign In
+                    </a>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Account
+                    </h4>
+
+                    <a href="register.html">
+                        Create Account
+                    </a>
+
+                    <a href="login.html">
+                        Login
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 NexaVault. Demonstration interface only.
+                </span>
+
+                <!-- <span>
+                     No financial or investment advices are provided.
+                </span> -->
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
+
+    <script>
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const nav =
+            document.querySelector(".nav");
+
+
+        if (menuToggle && nav) {
+
+            menuToggle.addEventListener("click", () => {
+
+                nav.classList.toggle("show");
+
+            });
+
+        }
+
+
+        document
+            .querySelectorAll(".nav a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    if (nav) {
+                        nav.classList.remove("show");
+                    }
+
+                });
+
+            });
+
+
+        window.addEventListener("scroll", () => {
+
+            const header =
+                document.querySelector(".header");
+
+            if (!header) return;
+
+
+            if (window.scrollY > 30) {
+
+                header.style.background =
+                    "rgba(7,16,13,0.96)";
+
+            } else {
+
+                header.style.background =
+                    "rgba(7,16,13,0.78)";
+
+            }
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

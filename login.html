@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Log In | NexaVault</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =========================================
+           AUTH PAGE
+        ========================================= */
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 50% 20%,
+                    rgba(54, 226, 154, 0.09),
+                    transparent 38%),
+                #06100c;
+        }
+
+        .auth-page {
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* =========================================
+           AUTH HEADER
+        ========================================= */
+
+        .auth-header {
+            padding: 24px 25px;
+        }
+
+        .auth-header-inner {
+            max-width: 1200px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .auth-back {
+            color: #83958d;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            text-decoration: none;
+
+            transition: 0.2s ease;
+        }
+
+        .auth-back:hover {
+            color: var(--green);
+        }
+
+        /* =========================================
+           AUTH CONTENT
+        ========================================= */
+
+        .auth-content {
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 45px 20px 80px;
+        }
+
+        .auth-wrapper {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .auth-heading {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+        .auth-icon {
+            width: 52px;
+            height: 52px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(54, 226, 154, 0.18);
+            border-radius: 15px;
+
+            background: rgba(54, 226, 154, 0.07);
+
+            color: var(--green);
+
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .auth-heading h1 {
+            margin: 0 0 10px;
+
+            color: #f2f7f4;
+
+            font-size: 32px;
+            letter-spacing: -1.2px;
+        }
+
+        .auth-heading p {
+            max-width: 350px;
+
+            margin: auto;
+
+            color: var(--muted);
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           AUTH CARD
+        ========================================= */
+
+        .auth-card {
+            padding: 30px;
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(255, 255, 255, 0.045),
+                    rgba(255, 255, 255, 0.015));
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.28);
+        }
+
+        .auth-demo-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-bottom: 24px;
+            padding: 10px 12px;
+
+            border: 1px solid rgba(54, 226, 154, 0.13);
+            border-radius: 9px;
+
+            background: rgba(54, 226, 154, 0.035);
+
+            color: #8ea199;
+
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+        .auth-demo-label span {
+            width: 6px;
+            height: 6px;
+
+            flex: 0 0 auto;
+
+            border-radius: 50%;
+
+            background: var(--green);
+        }
+
+        .auth-demo-label strong {
+            color: var(--green);
+        }
+
+        /* =========================================
+           FORM
+        ========================================= */
+
+        .form-group {
+            margin-bottom: 19px;
+        }
+
+        .form-label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #b7c5bf;
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .form-input {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 10px;
+
+            outline: none;
+
+            background: rgba(0, 0, 0, 0.16);
+
+            color: #edf4f0;
+
+            font-family: inherit;
+            font-size: 13px;
+
+            transition: 0.2s ease;
+        }
+
+        .form-input::placeholder {
+            color: #52635b;
+        }
+
+        .form-input:focus {
+            border-color: rgba(54, 226, 154, 0.45);
+
+            background: rgba(54, 226, 154, 0.025);
+
+            box-shadow:
+                0 0 0 3px rgba(54, 226, 154, 0.06);
+        }
+
+        .password-input {
+            padding-right: 55px;
+        }
+
+        .password-toggle {
+            position: absolute;
+
+            top: 50%;
+            right: 12px;
+
+            transform: translateY(-50%);
+
+            border: none;
+
+            background: none;
+
+            color: #70817a;
+
+            font-family: inherit;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .password-toggle:hover {
+            color: var(--green);
+        }
+
+        /* =========================================
+           FORM OPTIONS
+        ========================================= */
+
+        .form-options {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin: 3px 0 22px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            color: #71827a;
+
+            font-size: 10px;
+
+            cursor: pointer;
+        }
+
+        .remember-me input {
+            accent-color: var(--green);
+        }
+
+        .forgot-link {
+            color: var(--green);
+
+            font-size: 10px;
+            font-weight: 600;
+
+            text-decoration: none;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           BUTTON
+        ========================================= */
+
+        .auth-button {
+            width: 100%;
+
+            padding: 14px 18px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: var(--green);
+
+            color: #06100c;
+
+            font-family: inherit;
+
+            font-size: 13px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .auth-button:hover {
+            background: #4eeaaa;
+
+            transform: translateY(-1px);
+        }
+
+        .auth-button:active {
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           DIVIDER
+        ========================================= */
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin: 23px 0;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: "";
+
+            height: 1px;
+
+            flex: 1;
+
+            background: var(--border);
+        }
+
+        .auth-divider span {
+            color: #596a62;
+
+            font-size: 9px;
+            font-weight: 600;
+
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           REGISTER LINK
+        ========================================= */
+
+        .register-prompt {
+            text-align: center;
+
+            color: #75867e;
+
+            font-size: 11px;
+        }
+
+        .register-prompt a {
+            color: var(--green);
+
+            font-weight: 700;
+
+            text-decoration: none;
+        }
+
+        .register-prompt a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           SECURITY BOX
+        ========================================= */
+
+        .security-box {
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            margin-top: 18px;
+            padding: 14px;
+
+            border: 1px solid rgba(255, 255, 255, 0.055);
+            border-radius: 11px;
+
+            background: rgba(255, 255, 255, 0.018);
+        }
+
+        .security-icon {
+            flex: 0 0 auto;
+
+            color: var(--green);
+
+            font-size: 14px;
+        }
+
+        .security-box p {
+            margin: 0;
+
+            color: #64766e;
+
+            font-size: 9px;
+            line-height: 1.7;
+        }
+
+        .security-box strong {
+            color: #94a59e;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .auth-footer {
+            padding: 20px;
+
+            text-align: center;
+
+            color: #4e5f57;
+
+            font-size: 9px;
+        }
+
+        /* =========================================
+           ERROR
+        ========================================= */
+
+        .form-error {
+            display: none;
+
+            margin-top: 8px;
+
+            color: #cf8d8d;
+
+            font-size: 10px;
+        }
+
+        .form-error.show {
+            display: block;
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            .auth-header {
+                padding: 18px;
+            }
+
+            .auth-content {
+                padding: 25px 15px 50px;
+            }
+
+            .auth-heading h1 {
+                font-size: 28px;
+            }
+
+            .auth-card {
+                padding: 22px;
+                border-radius: 17px;
+            }
+
+            .form-options {
+                align-items: flex-start;
+            }
+
+        }
+    </style>
+</head>
+
+<body class="page-enter">
+
+    <div class="auth-page">
+
+
+        <!-- =====================================
+             HEADER
+        ====================================== -->
+
+        <header class="auth-header">
+
+            <div class="auth-header-inner">
+
+                <a href="index.html" class="logo">
+                    <span class="logo-mark">N</span>
+                    <span>NexaVault</span>
+                </a>
+
+                <a href="index.html" class="auth-back">
+                    ← Back to home
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             CONTENT
+        ====================================== -->
+
+        <main class="auth-content">
+
+            <div class="auth-wrapper">
+
+
+                <!-- HEADING -->
+
+                <div class="auth-heading">
+
+                    <div class="auth-icon">
+                        N
+                    </div>
+
+                    <h1>
+                        Welcome back
+                    </h1>
+
+                    <p>
+                        Sign in to explore your NexaVault dashboard
+                        and portfolio experience.
+                    </p>
+
+                </div>
+
+
+                <!-- CARD -->
+
+                <div class="auth-card">
+
+
+                    <div class="auth-demo-label">
+
+                        <span></span>
+
+                        <div>
+                            <strong>Crypto Markets environment.</strong>
+                            No financial account is connected.
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORM -->
+
+                    <form id="loginForm">
+
+
+                        <div class="form-group">
+
+                            <label class="form-label" for="email">
+                                Email Address
+                            </label>
+
+                            <input type="email" id="loginEmail" name="email" class="form-input"
+                                placeholder="you@example.com" autocomplete="email" required>
+
+                            <div class="form-error" id="emailError">
+                                Please enter a valid email address.
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label class="form-label" for="password">
+                                Password
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <input type="password" id="loginPassword" name="password"
+                                    class="form-input password-input" placeholder="Enter your password"
+                                    autocomplete="current-password" required>
+
+                                <button type="button" class="password-toggle" id="passwordToggle">
+                                    Show
+                                </button>
+
+                            </div>
+
+                            <div class="form-error" id="passwordError">
+                                Please enter your password.
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-options">
+
+                            <label class="remember-me">
+
+                                <input type="checkbox" id="rememberMe">
+
+                                Remember me
+
+                            </label>
+
+                            <a href="#" class="forgot-link" id="forgotPassword">
+                                Forgot password?
+                            </a>
+
+                        </div>
+
+
+                        <button type="submit" class="auth-button">
+                            Continue to Dashboard
+                        </button>
+
+                    </form>
+
+                    <div id="loginMessage" class="form-message"></div>
+
+
+
+
+                    <div class="auth-divider">
+                        <span>or</span>
+                    </div>
+
+
+                    <div class="register-prompt">
+
+                        Don't have an account?
+
+                        <a href="register.html">
+                            Create an account
+                        </a>
+
+                    </div>
+
+
+                    <!-- SECURITY -->
+
+                    <div class="security-box">
+
+                        <div class="security-icon">
+                            ◈
+                        </div>
+
+                        <p>
+                            <strong>Security reminder:</strong>
+                            Never share passwords, private keys, recovery
+                            phrases or authentication codes with anyone.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- FOOTER -->
+
+        <footer class="auth-footer">
+
+            © 2026 NexaVault · Demonstration interface
+
+        </footer>
+
+    </div>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const passwordInput =
+            document.getElementById("password");
+
+        const passwordToggle =
+            document.getElementById("passwordToggle");
+
+        const forgotPassword =
+            document.getElementById("forgotPassword");
+
+
+        /* -----------------------------------------
+           PASSWORD VISIBILITY
+        ----------------------------------------- */
+
+        passwordToggle.addEventListener("click", () => {
+
+            if (passwordInput.type === "password") {
+
+                passwordInput.type = "text";
+
+                passwordToggle.textContent = "Hide";
+
+            } else {
+
+                passwordInput.type = "password";
+
+                passwordToggle.textContent = "Show";
+
+            }
+
+        });
+
+
+        /* -----------------------------------------
+           LOGIN
+        ----------------------------------------- */
+
+        loginForm.addEventListener("submit", event => {
+
+            event.preventDefault();
+
+            const email =
+                document.getElementById("email");
+
+            const password =
+                document.getElementById("password");
+
+            const emailError =
+                document.getElementById("emailError");
+
+            const passwordError =
+                document.getElementById("passwordError");
+
+
+            emailError.classList.remove("show");
+            passwordError.classList.remove("show");
+
+
+            let valid = true;
+
+
+            if (!email.value.trim() ||
+                !email.value.includes("@")) {
+
+                emailError.classList.add("show");
+
+                valid = false;
+
+            }
+
+
+            if (!password.value.trim()) {
+
+                passwordError.classList.add("show");
+
+                valid = false;
+
+            }
+
+
+            if (!valid) {
+                return;
+            }
+
+
+            /*
+                FRONT-END DEMO ONLY
+
+                A real authentication system should use:
+                - Secure backend authentication
+                - Password hashing
+                - Session management
+                - HTTPS
+                - Rate limiting
+                - CSRF protection
+                - Proper account recovery
+            */
+
+            window.location.href = "dashboard.html";
+
+        });
+
+
+        /* -----------------------------------------
+           FORGOT PASSWORD
+        ----------------------------------------- */
+
+        forgotPassword.addEventListener("click", event => {
+
+            event.preventDefault();
+
+            alert(
+                "Password recovery is disabled in this demo. " +
+                "A production implementation would connect this " +
+                "feature to a secure account-recovery system."
+            );
+
+        });
+
+    </script>
+
+    <script src="js/script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const form =
+                document.getElementById("loginForm");
+
+            const message =
+                document.getElementById("loginMessage");
+
+
+            if (!form) {
+                return;
+            }
+
+
+            form.addEventListener("submit", async (event) => {
+
+                event.preventDefault();
+
+
+                const email =
+                    document
+                        .getElementById("loginEmail")
+                        .value
+                        .trim();
+
+
+                const password =
+                    document
+                        .getElementById("loginPassword")
+                        .value;
+
+
+                message.className =
+                    "form-message";
+
+
+                message.textContent =
+                    "";
+
+
+                if (!email || !password) {
+
+                    message.textContent =
+                        "Please enter your email and password.";
+
+                    message.classList.add("error");
+
+                    return;
+
+                }
+
+
+                /*
+                   Check the locally registered account.
+                */
+
+                const result =
+                    await NexaAuth.login(
+                        email,
+                        password
+                    );
+
+
+                if (!result.success) {
+
+                    message.textContent =
+                        result.message;
+
+                    message.classList.add("error");
+
+                    return;
+
+                }
+
+
+                message.textContent =
+                    "Login successful. Opening your dashboard...";
+
+                message.classList.add("success");
+
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        "dashboard.html";
+
+                }, 500);
+
+            });
+
+
+            /* -----------------------------------------------
+               FORGOT PASSWORD
+            ------------------------------------------------ */
+
+            const forgotPassword =
+                document.getElementById("forgotPassword");
+
+
+            if (forgotPassword) {
+
+                forgotPassword.addEventListener(
+                    "click",
+                    event => {
+
+                        event.preventDefault();
+
+
+                        showDemoNotice(
+                            "Password recovery is disabled in this demonstration environment."
+                        );
+
+                    }
+                );
+
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
