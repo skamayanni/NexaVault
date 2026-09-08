@@ -25,7 +25,7 @@
 
         .dashboard-page {
             min-height: 100vh;
-            padding-top: 78px;
+            /* padding-top: 10px; */
         }
 
         .dashboard-layout {
@@ -33,142 +33,6 @@
             min-height: calc(100vh - 78px);
         }
 
-        /* HEADER */
-
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-
-            background: rgba(7, 16, 13, 0.78);
-            backdrop-filter: blur(18px);
-
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-
-        .header-inner {
-            width: min(1180px, 92%);
-            height: 76px;
-
-            margin: auto;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            color: var(--text);
-            text-decoration: none;
-
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.6px;
-        }
-
-
-        .logo-mark {
-            width: 37px;
-            height: 37px;
-
-            border-radius: 11px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: var(--green);
-            color: #06100c;
-
-            font-size: 17px;
-            font-weight: 900;
-
-            box-shadow:
-                0 8px 25px rgba(54, 226, 154, 0.18);
-        }
-
-
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-
-        .nav a {
-            color: var(--muted);
-            text-decoration: none;
-
-            font-size: 13px;
-            font-weight: 500;
-
-            transition: 0.2s ease;
-        }
-
-
-        .nav a:hover,
-        .nav a.active {
-            color: var(--text);
-        }
-
-
-        .nav-actions {
-            display: flex;
-            gap: 10px;
-
-            margin-left: 8px;
-        }
-
-
-        .nav-login {
-            padding: 9px 15px;
-
-            border:
-                1px solid rgba(255, 255, 255, 0.09);
-
-            border-radius: 8px;
-
-            color: var(--text) !important;
-        }
-
-
-        .nav-register {
-            padding: 10px 16px;
-
-            border-radius: 8px;
-
-            background: var(--green);
-
-            color: #06100c !important;
-
-            font-weight: 700 !important;
-        }
-
-
-        .nav-register:hover {
-            background: #49eaa5;
-        }
-
-
-        .menu-toggle {
-            display: none;
-
-            border: none;
-            background: transparent;
-
-            color: var(--text);
-
-            font-size: 24px;
-            cursor: pointer;
-        }
 
         /* =========================================
            SIDEBAR
@@ -753,6 +617,22 @@
 
             border-radius: 50%;
 
+            background: conic-gradient(var(--green) 0 25%,
+                    #67b99a 25% 50%,
+                    #438d72 50% 75%,
+                    #315a4c 75% 100%);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* .donut {
+            width: 100%;
+            height: 100%;
+
+            border-radius: 50%;
+
             background:
                 conic-gradient(var(--green) 0 51.06%,
                     #67b99a 51.06% 80.47%,
@@ -762,7 +642,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
+        } */
 
         .donut::after {
             content: "";
@@ -1248,9 +1128,7 @@
 
         @media (max-width: 650px) {
 
-            .dashboard-page {
-                padding-top: 70px;
-            }
+
 
             .dashboard-layout {
                 min-height: calc(100vh - 70px);
@@ -1303,6 +1181,115 @@
             }
 
         }
+
+        /* =========================================================
+   NEXAVAULT MOBILE HEADER FIX
+========================================================= */
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: 0;
+            color: var(--text);
+            font-size: 25px;
+            line-height: 1;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+
+        /* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+        @media (max-width: 800px) {
+
+            .header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 9999;
+            }
+
+
+            .header-inner {
+                position: relative;
+                min-height: 72px;
+            }
+
+
+            .menu-toggle {
+                display: block;
+                margin-left: auto;
+                position: relative;
+                z-index: 10001;
+            }
+
+
+            .nav {
+                display: none !important;
+
+                position: absolute;
+
+                top: 72px;
+                left: 16px;
+                right: 16px;
+
+                flex-direction: column;
+
+                align-items: center;
+
+                gap: 0;
+
+                padding: 20px;
+
+                background:
+                    rgba(7, 16, 13, 0.98);
+
+                border:
+                    1px solid rgba(255, 255, 255, 0.08);
+
+                border-radius: 14px;
+
+                box-shadow:
+                    0 20px 50px rgba(0, 0, 0, 0.4);
+
+                backdrop-filter:
+                    blur(18px);
+
+                z-index: 10000;
+            }
+
+
+            .nav.show {
+                display: flex !important;
+            }
+
+
+            .nav a {
+                width: 100%;
+                padding: 14px 10px;
+
+                text-align: center;
+
+                color: var(--muted);
+
+                text-decoration: none;
+            }
+
+
+            .nav a:hover,
+            .nav a.active {
+                color: var(--text);
+            }
+
+
+            .header-actions {
+                display: none !important;
+            }
+
+        }
     </style>
 </head>
 
@@ -1316,66 +1303,175 @@
 
         <div class="header-inner">
 
-
             <a href="index.html" class="logo">
 
-                <span class="logo-mark">
-                    N
-                </span>
+                <span class="logo-mark">N</span>
 
-                <span>
-                    NexaVault
-                </span>
+                <span>NexaVault</span>
 
             </a>
 
 
-            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">
-                ☰
-            </button>
-
-
-            <nav class="nav">
-
-                <a href="index.html">
-                    Home
+            <a href="index.html" class="auth-back">
+                    ← Back to home
                 </a>
-
-                <a href="about.html" class="active">
-                    About
-                </a>
-
-                <a href="markets.html">
-                    Markets
-                </a>
-
-                <a href="plans.html">
-                    Plans
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-
-                <div class="nav-actions">
-
-                    <a href="login.html" class="nav-login" data-action="logout">
-                        Sign Out
-                    </a>
-
-
-                    <a href="dashboard.html" class="nav-register">
-                        Trade Now
-                    </a>
-
-                </div>
-
-            </nav>
 
         </div>
 
     </header>
+
+    <style>
+        /* =========================================
+           AUTH HEADER
+        ========================================= */
+
+        .auth-header {
+            padding: 24px 25px;
+        }
+
+        .auth-header-inner {
+            max-width: 1200px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .auth-back {
+            color: #83958d;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            text-decoration: none;
+
+            transition: 0.2s ease;
+        }
+
+        .auth-back:hover {
+            color: var(--green);
+        }
+
+        /* =========================================
+           AUTH CONTENT
+        ========================================= */
+
+        .auth-content {
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 45px 20px 80px;
+        }
+
+        .auth-wrapper {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .auth-heading {
+            text-align: center;
+
+            margin-bottom: 10px;
+        }
+
+        .auth-icon {
+            width: 52px;
+            height: 52px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px solid rgba(54, 226, 154, 0.18);
+            border-radius: 15px;
+
+            background: rgba(54, 226, 154, 0.07);
+
+            color: var(--green);
+
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .auth-heading h1 {
+            margin: 0 0 10px;
+
+            color: #f2f7f4;
+
+            font-size: 32px;
+            letter-spacing: -1.2px;
+        }
+
+        .auth-heading p {
+            max-width: 350px;
+
+            margin: auto;
+
+            color: var(--muted);
+
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           AUTH CARD
+        ========================================= */
+
+        .auth-card {
+            padding: 30px;
+
+            border: 1px solid var(--border);
+            border-radius: 20px;
+
+            background:
+                linear-gradient(145deg,
+                    rgba(255, 255, 255, 0.045),
+                    rgba(255, 255, 255, 0.015));
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.28);
+        }
+
+        .auth-demo-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-bottom: 24px;
+            padding: 10px 12px;
+
+            border: 1px solid rgba(54, 226, 154, 0.13);
+            border-radius: 9px;
+
+            background: rgba(54, 226, 154, 0.035);
+
+            color: #8ea199;
+
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+        .auth-demo-label span {
+            width: 6px;
+            height: 6px;
+
+            flex: 0 0 auto;
+
+            border-radius: 50%;
+
+            background: var(--green);
+        }
+
+        .auth-demo-label strong {
+            color: var(--green);
+        }
+    </style>
 
 
     <!-- =========================================
@@ -1667,7 +1763,7 @@
                             </div>
 
                             <div id="dashboardGainPercent" class="stat-change positive">
-                                +9.54% 
+                                +9.54%
                             </div>
 
                         </div>
@@ -1692,7 +1788,7 @@
                             </div>
 
                             <div class="stat-change">
-                                 allocation
+                                allocation
                             </div>
 
                         </div>
@@ -1816,7 +1912,7 @@
 
                                 <div class="allocation-chart">
 
-                                    <div class="donut"></div>
+                                    <div class="donut" id="allocationDonut"></div>
 
                                     <div class="donut-center">
 
@@ -2595,7 +2691,7 @@
                                 <h2>Recent Activity</h2>
 
                                 <span>
-                                     transactions
+                                    transactions
                                 </span>
                             </div>
 
@@ -2618,7 +2714,7 @@
                                     </strong>
 
                                     <span>
-                                         transaction · Today
+                                        transaction · Today
                                     </span>
 
                                 </div>
@@ -2951,6 +3047,60 @@
 
             const portfolio =
                 NexaAuth.getCurrentPortfolio();
+
+            /* =========================================================
+DYNAMIC ALLOCATION DONUT
+========================================================= */
+
+            const allocationDonut =
+                document.getElementById("allocationDonut");
+
+
+            if (allocationDonut && portfolio) {
+
+                const bitcoin =
+                    Number(portfolio.allocation.bitcoin) || 0;
+
+                const ethereum =
+                    Number(portfolio.allocation.ethereum) || 0;
+
+                const solana =
+                    Number(portfolio.allocation.solana) || 0;
+
+                const other =
+                    Number(portfolio.allocation.other) || 0;
+
+
+                /*
+                   Calculate the points where each
+                   section of the donut begins.
+                */
+
+                const bitcoinEnd =
+                    bitcoin;
+
+                const ethereumEnd =
+                    bitcoin + ethereum;
+
+                const solanaEnd =
+                    bitcoin + ethereum + solana;
+
+                const otherEnd =
+                    bitcoin +
+                    ethereum +
+                    solana +
+                    other;
+
+
+                allocationDonut.style.background =
+                    `conic-gradient(
+            var(--green) 0 ${bitcoinEnd}%,
+            #67b99a ${bitcoinEnd}% ${ethereumEnd}%,
+            #438d72 ${ethereumEnd}% ${solanaEnd}%,
+            #315a4c ${solanaEnd}% ${otherEnd}%
+        )`;
+
+            }
 
 
             /* -----------------------------------------------
@@ -3544,6 +3694,69 @@
             loadCryptoMarket,
             160000
         );
+
+    </script>
+
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
+
+    <script>
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const nav =
+            document.querySelector(".nav");
+
+
+        if (menuToggle && nav) {
+
+            menuToggle.addEventListener("click", () => {
+
+                nav.classList.toggle("show");
+
+            });
+
+        }
+
+
+        document
+            .querySelectorAll(".nav a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    if (nav) {
+                        nav.classList.remove("show");
+                    }
+
+                });
+
+            });
+
+
+        window.addEventListener("scroll", () => {
+
+            const header =
+                document.querySelector(".header");
+
+            if (!header) return;
+
+
+            if (window.scrollY > 30) {
+
+                header.style.background =
+                    "rgba(7,16,13,0.96)";
+
+            } else {
+
+                header.style.background =
+                    "rgba(7,16,13,0.78)";
+
+            }
+
+        });
 
     </script>
 

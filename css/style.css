@@ -39,120 +39,137 @@ a {
 
 
 /* ================= HEADER ================= */
-
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
 
-    background: rgba(7, 16, 13, 0.88);
-    backdrop-filter: blur(18px);
+            background: rgba(7, 16, 13, 0.78);
+            backdrop-filter: blur(18px);
 
-    border-bottom: 1px solid var(--border);
-}
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
 
-.nav-container {
-    height: 78px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+        .header-inner {
+            width: min(1180px, 92%);
+            margin: auto;
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+            height: 76px;
 
-    font-size: 20px;
-    font-weight: 800;
-}
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-.logo>span:last-child span {
-    color: var(--green);
-}
 
-.logo-icon {
-    width: 36px;
-    height: 36px;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
 
-    display: grid;
-    place-items: center;
+            color: var(--text);
+            text-decoration: none;
 
-    border-radius: 10px;
+            font-size: 20px;
+            font-weight: 800;
 
-    background: var(--green);
-    color: #06100c;
+            letter-spacing: -0.6px;
+        }
 
-    font-weight: 900;
-}
 
-.nav {
-    display: flex;
-    gap: 30px;
-}
+        .logo-mark {
+            width: 37px;
+            height: 37px;
 
-.nav a {
-    color: var(--muted);
-    font-size: 14px;
-    transition: .25s;
-}
+            border-radius: 11px;
 
-.nav a:hover,
-.nav a.active {
-    color: white;
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-.nav-buttons {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+            background: var(--green);
+            color: #06100c;
 
-.login-btn {
-    font-size: 14px;
-    color: var(--muted);
-}
+            font-size: 17px;
+            font-weight: 900;
 
-.primary-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+            box-shadow:
+                0 8px 25px rgba(54, 226, 154, 0.18);
+        }
 
-    padding: 14px 22px;
 
-    border-radius: 9px;
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
 
-    background: var(--green);
-    color: #05100c;
 
-    font-size: 14px;
-    font-weight: 700;
+        .nav a {
+            color: var(--muted);
+            text-decoration: none;
 
-    transition: .25s;
-}
+            font-size: 13px;
+            font-weight: 500;
 
-.primary-btn:hover {
-    transform: translateY(-2px);
-    background: #55eca9;
-}
+            transition: 0.2s ease;
+        }
 
-.primary-btn.small {
-    padding: 10px 17px;
-}
 
-.menu-toggle {
-    display: none;
+        .nav a:hover {
+            color: var(--text);
+        }
 
-    background: none;
-    border: none;
 
-    color: white;
-    font-size: 25px;
-}
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 8px;
+        }
+
+
+        .nav-login {
+            color: var(--text) !important;
+
+            padding: 9px 15px;
+
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 8px;
+        }
+
+
+        .nav-register {
+            padding: 10px 16px;
+
+            border-radius: 8px;
+
+            background: var(--green);
+            color: #06100c !important;
+
+            font-weight: 700 !important;
+        }
+
+
+        .nav-register:hover {
+            background: #49eaa5;
+        }
+
+
+        .menu-toggle {
+            display: none;
+
+            border: none;
+            background: transparent;
+
+            color: var(--text);
+
+            font-size: 24px;
+            cursor: pointer;
+        }
 
 
 /* ================= HERO ================= */

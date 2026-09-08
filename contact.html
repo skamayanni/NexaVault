@@ -15,142 +15,6 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-        /* HEADER */
-
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-
-            background: rgba(7, 16, 13, 0.78);
-            backdrop-filter: blur(18px);
-
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-
-        .header-inner {
-            width: min(1180px, 92%);
-            height: 76px;
-
-            margin: auto;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-
-            color: var(--text);
-            text-decoration: none;
-
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.6px;
-        }
-
-
-        .logo-mark {
-            width: 37px;
-            height: 37px;
-
-            border-radius: 11px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: var(--green);
-            color: #06100c;
-
-            font-size: 17px;
-            font-weight: 900;
-
-            box-shadow:
-                0 8px 25px rgba(54, 226, 154, 0.18);
-        }
-
-
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-
-        .nav a {
-            color: var(--muted);
-            text-decoration: none;
-
-            font-size: 13px;
-            font-weight: 500;
-
-            transition: 0.2s ease;
-        }
-
-
-        .nav a:hover,
-        .nav a.active {
-            color: var(--text);
-        }
-
-
-        .nav-actions {
-            display: flex;
-            gap: 10px;
-
-            margin-left: 8px;
-        }
-
-
-        .nav-login {
-            padding: 9px 15px;
-
-            border:
-                1px solid rgba(255, 255, 255, 0.09);
-
-            border-radius: 8px;
-
-            color: var(--text) !important;
-        }
-
-
-        .nav-register {
-            padding: 10px 16px;
-
-            border-radius: 8px;
-
-            background: var(--green);
-
-            color: #06100c !important;
-
-            font-weight: 700 !important;
-        }
-
-
-        .nav-register:hover {
-            background: #49eaa5;
-        }
-
-
-        .menu-toggle {
-            display: none;
-
-            border: none;
-            background: transparent;
-
-            color: var(--text);
-
-            font-size: 24px;
-            cursor: pointer;
-        }
 
 
         /* =================================
@@ -510,7 +374,123 @@
                 font-size: 27px;
             }
         }
+
+         /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 850px) {
+
+            .about-intro {
+                grid-template-columns: 1fr;
+
+                gap: 35px;
+            }
+
+
+            .stats-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .stat-card:nth-child(2) {
+                border-right: none;
+            }
+
+
+            .stat-card:nth-child(1),
+            .stat-card:nth-child(2) {
+                border-bottom:
+                    1px solid var(--border);
+            }
+
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 760px) {
+
+            .header-inner {
+                height: 68px;
+            }
+
+
+            .menu-toggle {
+                display: block;
+            }
+
+
+            .nav {
+                position: absolute;
+
+                top: 68px;
+                left: 0;
+
+                width: 100%;
+
+                display: none;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                gap: 0;
+
+                padding: 15px 5% 22px;
+
+                border-bottom:
+                    1px solid var(--border);
+
+                background:
+                    rgba(7, 16, 13, 0.98);
+
+                backdrop-filter: blur(18px);
+            }
+
+
+            .nav.show {
+                display: flex;
+            }
+
+
+            .nav a {
+                padding: 12px 0;
+
+                border-bottom:
+                    1px solid rgba(255, 255, 255, 0.04);
+            }
+
+
+            .nav-actions {
+                display: grid;
+
+                grid-template-columns:
+                    1fr 1fr;
+
+                margin: 10px 0 0;
+
+                gap: 10px;
+            }
+
+
+            .nav-login,
+            .nav-register {
+                text-align: center;
+            }
+
+        }
+
     </style>
+    
 </head>
 
 <body class="page-enter">
@@ -523,16 +503,11 @@
 
         <div class="header-inner">
 
-
             <a href="index.html" class="logo">
 
-                <span class="logo-mark">
-                    N
-                </span>
+                <span class="logo-mark">N</span>
 
-                <span>
-                    NexaVault
-                </span>
+                <span>NexaVault</span>
 
             </a>
 
@@ -560,7 +535,7 @@
                     Plans
                 </a>
 
-                <a href="contact.html" class="active">
+                <a href="contact.html">
                     Contact
                 </a>
 
@@ -1235,6 +1210,69 @@
                 });
 
             });
+
+    </script>
+
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
+
+    <script>
+
+        const menuToggle =
+            document.getElementById("menuToggle");
+
+        const nav =
+            document.querySelector(".nav");
+
+
+        if (menuToggle && nav) {
+
+            menuToggle.addEventListener("click", () => {
+
+                nav.classList.toggle("show");
+
+            });
+
+        }
+
+
+        document
+            .querySelectorAll(".nav a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    if (nav) {
+                        nav.classList.remove("show");
+                    }
+
+                });
+
+            });
+
+
+        window.addEventListener("scroll", () => {
+
+            const header =
+                document.querySelector(".header");
+
+            if (!header) return;
+
+
+            if (window.scrollY > 30) {
+
+                header.style.background =
+                    "rgba(7,16,13,0.96)";
+
+            } else {
+
+                header.style.background =
+                    "rgba(7,16,13,0.78)";
+
+            }
+
+        });
 
     </script>
 
