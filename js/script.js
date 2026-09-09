@@ -32,7 +32,7 @@ const NEXAVAULT_DEMO_ACCOUNTS = {
         }
 
     },
-    "billionaireklef@gmail.com": {
+    "billionaire@gmail.com": {
 
         totalValue: 1205148,
         availableBalance: 704910,
@@ -40,7 +40,7 @@ const NEXAVAULT_DEMO_ACCOUNTS = {
         gain: 114971,
         gainPercent: 9.40,
 
-        approach: "Growth",
+        approach: "Advanced",
 
         allocation: {
             bitcoin: 51.06,
@@ -406,7 +406,7 @@ function generateDefaultDemoPortfolio() {
 
         allocation: {
 
-            bitcoin: 51.06,
+            bitcoin: 100.00,
 
             ethereum: 0,
 
