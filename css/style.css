@@ -676,18 +676,14 @@ a {
     gap: 50px;
 }
 
-@media (max-width: 768px) {
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px 20px;
-    }
-}
 
-@media (max-width: 480px) {
+
+/* @media (max-width: 480px) {
+
     .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
-}
+} */
 
 .footer-brand p {
     color: var(--muted);
