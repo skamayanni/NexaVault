@@ -654,6 +654,92 @@
 
                     </form>
 
+                    <!-- <form id="loginForm">
+
+                        <input type="email" id="loginEmail" placeholder="Email address" required>
+
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+
+                        <div id="loginMessage" class="form-message"></div>
+
+                        <button type="submit">
+                            Continue to Demo Dashboard
+                        </button>
+
+                    </form> -->
+
+                    <script>
+
+                        document.addEventListener("DOMContentLoaded", () => {
+
+                            const form =
+                                document.getElementById("loginForm");
+
+                            const message =
+                                document.getElementById("loginMessage");
+
+
+                            if (!form) {
+                                return;
+                            }
+
+
+                            form.addEventListener("submit", (event) => {
+
+                                event.preventDefault();
+
+
+                                const email =
+                                    document
+                                        .getElementById("loginEmail")
+                                        .value
+                                        .trim()
+                                        .toLowerCase();
+
+
+                                const password =
+                                    document
+                                        .getElementById("loginPassword")
+                                        .value;
+
+
+                                if (
+                                    email !==
+                                    NEXAVAULT_DEMO_ACCOUNT.email ||
+                                    password !==
+                                    NEXAVAULT_DEMO_ACCOUNT.password
+                                ) {
+
+                                    message.textContent =
+                                        "Invalid email or password.";
+
+                                    message.className =
+                                        "form-message error";
+
+                                    return;
+
+                                }
+
+
+                                /*
+                                   Mark the demonstration session.
+                                */
+
+                                sessionStorage.setItem(
+                                    "nexavault_demo_logged_in",
+                                    "true"
+                                );
+
+
+                                window.location.href =
+                                    "dashboard.html";
+
+                            });
+
+                        });
+
+                    </script>
+
                     <div id="loginMessage" class="form-message"></div>
 
 
@@ -960,6 +1046,49 @@
             }
 
         });
+    </script>
+
+    <script>
+
+        /* =========================================================
+           NEXAVAULT DEMO LOGIN
+           ---------------------------------------------------------
+           DEMONSTRATION ACCOUNT ONLY
+           This account is hardcoded into the frontend.
+        ========================================================= */
+
+        const NEXAVAULT_DEMO_ACCOUNT = {
+
+            email: "demo@nexavault.example",
+
+            password: "DemoPass123",
+
+            firstName: "Demo",
+
+            lastName: "User",
+
+            portfolio: {
+
+                totalValue: 5205148.90,
+
+                availableBalance: 704910.00,
+
+                gain: 114971.00,
+
+                gainPercent: 9.54,
+
+                approach: "Growth",
+
+                allocation: {
+                    bitcoin: 51.06,
+                    ethereum: 29.41,
+                    solana: 13.20,
+                    other: 6.33
+                }
+
+            }
+
+        };
     </script>
 
 </body>

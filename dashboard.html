@@ -444,7 +444,7 @@
         .dashboard-grid {
             display: grid;
 
-            grid-template-columns: minmax(0, 1.8fr) minmax(300px, 1fr);
+            grid-template-columns: minmax(300px, 1fr) minmax(0, 1.8fr);
 
             gap: 20px;
 
@@ -920,7 +920,7 @@
         .quick-actions {
             display: grid;
 
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(2, 1fr);
 
             gap: 10px;
 
@@ -1505,15 +1505,17 @@
                         Markets
                     </a>
 
-                    <a href="plans.html" class="sidebar-link">
-                        <span class="sidebar-icon">◇</span>
-                        Plans
+                    <a href="#" class="sidebar-link demo-link" data-title="Transactions">
+                        <span class="sidebar-icon">↔</span>
+                        Transactions
                     </a>
+
+                    
 
                 </nav>
 
 
-                <div class="sidebar-label">
+                <!-- <div class="sidebar-label">
                     Portfolio
                 </div>
 
@@ -1529,12 +1531,17 @@
                         Transactions
                     </a>
 
-                </nav>
+                </nav> -->
 
 
                 <div class="sidebar-label">
                     Account
                 </div>
+
+                <a href="plans.html" class="sidebar-link">
+                        <span class="sidebar-icon">◇</span>
+                        Deposit Plans
+                    </a>
 
                 <nav class="sidebar-nav">
 
@@ -1680,13 +1687,13 @@
                             ↓ Withdraw
                         </button>
 
-                        <button class="quick-action " data-title="Transfer">
+                        <!-- <button class="quick-action " data-title="Transfer">
                             ↔ Transfer
                         </button>
 
                         <button class="quick-action" onclick="window.location.href='markets.html'">
                              Explore Markets →
-                        </button>
+                        </button> -->
 
                     </div>
 
@@ -1807,97 +1814,6 @@
                     <section class="dashboard-grid">
 
 
-                        <!-- PERFORMANCE -->
-
-                        <div class="dashboard-card chart-card">
-
-                            <div class="card-header">
-
-                                <div>
-                                    <h2>Global Market Analytics</h2>
-                                    <span>Illustrative data</span>
-                                </div>
-
-                                <div class="chart-controls">
-
-                                    <button class="chart-period active">
-                                        1H
-                                    </button>
-
-                                    <button class="chart-period">
-                                        1D
-                                    </button>
-
-                                    <button class="chart-period">
-                                        1W
-                                    </button>
-
-                                    <button class="chart-period">
-                                        1M
-                                    </button>
-
-                                    <button class="chart-period">
-                                        1Y
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-
-                            <div class="backdrop-blur-xl bg-white/5 rounded-xl p-5 border border-gray-800 shadow-lg">
-                                <!-- <h3 class="text-xl font-semibold text-white mb-4">Live Market Overview</h3> -->
-
-                                <!-- TradingView Widget BEGIN -->
-                                <div class="tradingview-widget-container" style="width: 100%; height: 400px;">
-                                    <iframe scrolling="no" allowtransparency="true" frameborder="0"
-                                        src="https://www.tradingview-widget.com/embed-widget/forex-cross-rates/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A400%2C%22currencies%22%3A%5B%22EUR%22%2C%22USD%22%2C%22JPY%22%2C%22GBP%22%2C%22CHF%22%2C%22AUD%22%2C%22CAD%22%2C%22NZD%22%5D%2C%22colorTheme%22%3A%22dark%22%2C%22utm_source%22%3A%22tradingview.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22forex-cross-rates%22%2C%22page-uri%22%3A%22tradingview.com%2F%22%7D"
-                                        title="forex cross-rates TradingView widget" lang="en"
-                                        style="user-select: none; box-sizing: border-box; display: block; height: 100%; width: 100%;"></iframe>
-
-                                    <style>
-                                        .tradingview-widget-copyright {
-                                            font-size: 13px !important;
-                                            line-height: 32px !important;
-                                            text-align: center !important;
-                                            vertical-align: middle !important;
-                                            /* @mixin sf-pro-display-font; */
-                                            font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif !important;
-                                            color: #B2B5BE !important;
-                                        }
-
-                                        .tradingview-widget-copyright .blue-text {
-                                            color: #2962FF !important;
-                                        }
-
-                                        .tradingview-widget-copyright a {
-                                            text-decoration: none !important;
-                                            color: #B2B5BE !important;
-                                        }
-
-                                        .tradingview-widget-copyright a:visited {
-                                            color: #B2B5BE !important;
-                                        }
-
-                                        .tradingview-widget-copyright a:hover .blue-text {
-                                            color: #1E53E5 !important;
-                                        }
-
-                                        .tradingview-widget-copyright a:active .blue-text {
-                                            color: #1848CC !important;
-                                        }
-
-                                        .tradingview-widget-copyright a:visited .blue-text {
-                                            color: #2962FF !important;
-                                        }
-                                    </style>
-                                </div>
-                                <!-- TradingView Widget END -->
-                            </div>
-
-                        </div>
-
-
                         <!-- ALLOCATION -->
 
                         <div class="dashboard-card">
@@ -1995,6 +1911,96 @@
 
                                 </div>
 
+                            </div>
+
+                        </div>
+
+                        <!-- PERFORMANCE -->
+
+                        <div class="dashboard-card chart-card">
+
+                            <div class="card-header">
+
+                                <div>
+                                    <h2>Global Market Analytics</h2>
+                                    <span>Illustrative data</span>
+                                </div>
+
+                                <div class="chart-controls">
+
+                                    <button class="chart-period active">
+                                        1H
+                                    </button>
+
+                                    <button class="chart-period">
+                                        1D
+                                    </button>
+
+                                    <button class="chart-period">
+                                        1W
+                                    </button>
+
+                                    <button class="chart-period">
+                                        1M
+                                    </button>
+
+                                    <button class="chart-period">
+                                        1Y
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="backdrop-blur-xl bg-white/5 rounded-xl p-5 border border-gray-800 shadow-lg">
+                                <!-- <h3 class="text-xl font-semibold text-white mb-4">Live Market Overview</h3> -->
+
+                                <!-- TradingView Widget BEGIN -->
+                                <div class="tradingview-widget-container" style="width: 100%; height: 400px;">
+                                    <iframe scrolling="no" allowtransparency="true" frameborder="0"
+                                        src="https://www.tradingview-widget.com/embed-widget/forex-cross-rates/?locale=en#%7B%22width%22%3A%22100%25%22%2C%22height%22%3A400%2C%22currencies%22%3A%5B%22EUR%22%2C%22USD%22%2C%22JPY%22%2C%22GBP%22%2C%22CHF%22%2C%22AUD%22%2C%22CAD%22%2C%22NZD%22%5D%2C%22colorTheme%22%3A%22dark%22%2C%22utm_source%22%3A%22tradingview.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22forex-cross-rates%22%2C%22page-uri%22%3A%22tradingview.com%2F%22%7D"
+                                        title="forex cross-rates TradingView widget" lang="en"
+                                        style="user-select: none; box-sizing: border-box; display: block; height: 100%; width: 100%;"></iframe>
+
+                                    <style>
+                                        .tradingview-widget-copyright {
+                                            font-size: 13px !important;
+                                            line-height: 32px !important;
+                                            text-align: center !important;
+                                            vertical-align: middle !important;
+                                            /* @mixin sf-pro-display-font; */
+                                            font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif !important;
+                                            color: #B2B5BE !important;
+                                        }
+
+                                        .tradingview-widget-copyright .blue-text {
+                                            color: #2962FF !important;
+                                        }
+
+                                        .tradingview-widget-copyright a {
+                                            text-decoration: none !important;
+                                            color: #B2B5BE !important;
+                                        }
+
+                                        .tradingview-widget-copyright a:visited {
+                                            color: #B2B5BE !important;
+                                        }
+
+                                        .tradingview-widget-copyright a:hover .blue-text {
+                                            color: #1E53E5 !important;
+                                        }
+
+                                        .tradingview-widget-copyright a:active .blue-text {
+                                            color: #1848CC !important;
+                                        }
+
+                                        .tradingview-widget-copyright a:visited .blue-text {
+                                            color: #2962FF !important;
+                                        }
+                                    </style>
+                                </div>
+                                <!-- TradingView Widget END -->
                             </div>
 
                         </div>
