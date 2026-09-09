@@ -1010,7 +1010,7 @@
            FOOTER
            ========================================================= */
 
-        .footer {
+        /* .footer {
             border-top: 1px solid var(--border);
 
             background: #050d0a;
@@ -1105,7 +1105,7 @@
             color: #53615b;
 
             font-size: 9px;
-        }
+        } */
 
 
         /* =========================================================
@@ -1347,11 +1347,11 @@
 
 
 
-            .footer-bottom {
+            /* .footer-bottom {
                 flex-direction: column;
 
                 align-items: flex-start;
-            }
+            } */
 
         }
     </style>
@@ -1512,12 +1512,12 @@
                 </div>
 
 
-                <p class="hero-note">
+                <!-- <p class="hero-note">
 
                     Crypto-asset Environment · Market data and
                     portfolio figures are illustrative.
 
-                </p>
+                </p> -->
 
             </div>
 
@@ -2123,7 +2123,7 @@
    FOOTER
 ========================================================= */
 
-                .platform-footer {
+                /* .platform-footer {
                     display: flex;
 
                     justify-content: center;
@@ -2148,7 +2148,7 @@
 
                 .footer-separator {
                     color: #465569;
-                }
+                } */
 
 
                 /* =========================================================
@@ -3151,6 +3151,10 @@
          FOOTER
          ========================================================= -->
 
+    <!-- =================================
+         FOOTER
+    ================================= -->
+
     <footer class="footer">
 
         <div class="footer-container">
@@ -3251,7 +3255,8 @@
                 </span>
 
                 <span>
-                    No financial or investment advices are provided.
+                    No financial services, transactions or
+                    investment products are provided.
                 </span>
 
             </div>
@@ -3259,6 +3264,96 @@
         </div>
 
     </footer>
+
+    <style>
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        .footer {
+            border-top: 1px solid var(--border);
+
+            background: #050d0a;
+
+            padding: 55px 0 25px;
+        }
+
+
+        .footer-container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+
+        .footer-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.7fr 1fr 1fr 1fr;
+
+            gap: 40px;
+
+            padding-bottom: 45px;
+        }
+
+
+        .footer-brand p {
+            max-width: 300px;
+
+            margin: 15px 0 0;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+
+        .footer-column h4 {
+            margin: 0 0 15px;
+
+            color: var(--text);
+
+            font-size: 11px;
+        }
+
+
+        .footer-column a {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: var(--muted);
+
+            text-decoration: none;
+
+            font-size: 10px;
+        }
+
+
+        .footer-column a:hover {
+            color: var(--green);
+        }
+
+
+        .footer-bottom {
+            padding-top: 22px;
+
+            border-top: 1px solid var(--border);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            color: #53615b;
+
+            font-size: 9px;
+        }
+    </style>
 
 
 
