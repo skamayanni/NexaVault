@@ -1510,7 +1510,7 @@
                         Transactions
                     </a>
 
-                    
+
 
                 </nav>
 
@@ -1539,9 +1539,9 @@
                 </div>
 
                 <a href="plans.html" class="sidebar-link">
-                        <span class="sidebar-icon">◇</span>
-                        Deposit Plans
-                    </a>
+                    <span class="sidebar-icon">◇</span>
+                    Deposit Plans
+                </a>
 
                 <nav class="sidebar-nav">
 
@@ -1629,7 +1629,7 @@
                             <div class="user-profile">
 
                                 <div class="user-avatar">
-                                    Bk
+                                    RM
                                 </div>
 
                                 <div id="dashboardUserName" class="user-info">
@@ -1769,13 +1769,13 @@
 
                             </div>
 
-                            <div id="dashboardGain" class="stat-value">
-                                +$114,971.20
+                            <div class="stat-value" id="dashboardGain">
+                                +$114,971.00
                             </div>
 
-                            <div id="dashboardGainPercent" class="stat-change positive">
+                            <span id="dashboardGainPercent" class="gain-percent">
                                 +9.54%
-                            </div>
+                            </span>
 
                         </div>
 
@@ -1805,6 +1805,22 @@
                         </div> -->
 
                     </section>
+
+                    <style>
+                        .gain-percent {
+                            font-weight: 600;
+                            transition: color 0.25s ease;
+                        }
+
+                        .gain-percent.profit {
+                            color: var(--green);
+                        }
+
+                        .gain-percent.loss {
+                            color: #ff6b6b;
+                        }
+                    </style>
+                    
 
 
                     <!-- =================================
@@ -2817,14 +2833,14 @@
                                     </strong>
 
                                     <span>
-                                        Account activity
+                                        deposit · 18-02-2026
                                     </span>
 
                                 </div>
 
                                 <div class="activity-amount">
 
-                                    +$1500,000.00
+                                    +$1,500,000.00
 
                                     <span class="activity-status">
                                         Credit
