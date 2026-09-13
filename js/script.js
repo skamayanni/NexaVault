@@ -1484,9 +1484,9 @@ const NEXAVAULT_DEMO_ACCOUNT = {
        USER INFORMATION
     ----------------------------------------------------- */
 
-    firstName: "Rebecca",
+    firstName: "Rebecca M.",
 
-    lastName: "M",
+    lastName: " ",
 
 
     /* -----------------------------------------------------
