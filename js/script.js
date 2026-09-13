@@ -1486,7 +1486,7 @@ const NEXAVAULT_DEMO_ACCOUNT = {
 
     firstName: "Rebecca",
 
-    lastName: "Membreno",
+    lastName: "M",
 
 
     /* -----------------------------------------------------
