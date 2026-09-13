@@ -1557,224 +1557,224 @@ function formatCurrency(value) {
    This does NOT represent real investment performance.
 ========================================================= */
 
-// function animateDemoGain() {
+function animateDemoGain() {
 
-//     const gainElement =
-//         document.getElementById(
-//             "dashboardGain"
-//         );
+    const gainElement =
+        document.getElementById(
+            "dashboardGain"
+        );
 
 
-//     const percentElement =
-//         document.getElementById(
-//             "dashboardGainPercent"
-//         );
+    const percentElement =
+        document.getElementById(
+            "dashboardGainPercent"
+        );
 
 
-//     if (!gainElement) {
+    if (!gainElement) {
 
-//         return;
+        return;
 
-//     }
+    }
 
 
-//     const baseGain =
-//         Number(
-//             NEXAVAULT_DEMO_ACCOUNT
-//                 .portfolio
-//                 .gain
-//         ) || 0;
+    const baseGain =
+        Number(
+            NEXAVAULT_DEMO_ACCOUNT
+                .portfolio
+                .gain
+        ) || 0;
 
 
-//     const basePercent =
-//         Number(
-//             NEXAVAULT_DEMO_ACCOUNT
-//                 .portfolio
-//                 .gainPercent
-//         ) || 0;
+    const basePercent =
+        Number(
+            NEXAVAULT_DEMO_ACCOUNT
+                .portfolio
+                .gainPercent
+        ) || 0;
 
 
-//     /*
-//        Create a small random fluctuation.
+    /*
+       Create a small random fluctuation.
 
-//        Range:
-//        - approximately 4% below baseline
-//        - approximately 4% above baseline
-//     */
+       Range:
+       - approximately 4% below baseline
+       - approximately 4% above baseline
+    */
 
-//     const fluctuation =
-//         (Math.random() * 0.08) - 0.04;
+    const fluctuation =
+        (Math.random() * 0.08) - 0.04;
 
 
-//     const targetGain =
-//         baseGain *
-//         (1 + fluctuation);
+    const targetGain =
+        baseGain *
+        (1 + fluctuation);
 
 
-//     const targetPercent =
-//         basePercent *
-//         (1 + fluctuation);
+    const targetPercent =
+        basePercent *
+        (1 + fluctuation);
 
 
-//     /*
-//        Start the animation from zero.
-//     */
+    /*
+       Start the animation from zero.
+    */
 
-//     const duration =
-//         2200;
+    const duration =
+        2200;
 
 
-//     const startTime =
-//         performance.now();
+    const startTime =
+        performance.now();
 
 
-//     function updateCounter(currentTime) {
+    function updateCounter(currentTime) {
 
-//         const elapsed =
-//             currentTime -
-//             startTime;
+        const elapsed =
+            currentTime -
+            startTime;
 
 
-//         const progress =
-//             Math.min(
-//                 elapsed / duration,
-//                 1
-//             );
+        const progress =
+            Math.min(
+                elapsed / duration,
+                1
+            );
 
 
-//         /*
-//            Smooth ease-out effect.
-//         */
+        /*
+           Smooth ease-out effect.
+        */
 
-//         const easedProgress =
-//             1 -
-//             Math.pow(
-//                 1 - progress,
-//                 3
-//             );
+        const easedProgress =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
 
 
-//         const currentGain =
-//             targetGain *
-//             easedProgress;
+        const currentGain =
+            targetGain *
+            easedProgress;
 
 
-//         const currentPercent =
-//             targetPercent *
-//             easedProgress;
+        const currentPercent =
+            targetPercent *
+            easedProgress;
 
 
-//         gainElement.textContent =
-//             "+$" +
-//             formatCurrency(
-//                 currentGain
-//             );
+        gainElement.textContent =
+            "+$" +
+            formatCurrency(
+                currentGain
+            );
 
 
-//         if (percentElement) {
+        if (percentElement) {
 
-//             const sign =
-//                 currentPercent >= 0
-//                     ? "+"
-//                     : "";
+            const sign =
+                currentPercent >= 0
+                    ? "+"
+                    : "";
 
-//             percentElement.textContent =
-//                 sign +
-//                 currentPercent.toFixed(2) +
-//                 "%";
+            percentElement.textContent =
+                sign +
+                currentPercent.toFixed(2) +
+                "%";
 
 
-//             if (currentPercent >= 0) {
+            if (currentPercent >= 0) {
 
-//                 percentElement.classList.remove(
-//                     "loss"
-//                 );
+                percentElement.classList.remove(
+                    "loss"
+                );
 
-//                 percentElement.classList.add(
-//                     "profit"
-//                 );
+                percentElement.classList.add(
+                    "profit"
+                );
 
-//             } else {
+            } else {
 
-//                 percentElement.classList.remove(
-//                     "profit"
-//                 );
+                percentElement.classList.remove(
+                    "profit"
+                );
 
-//                 percentElement.classList.add(
-//                     "loss"
-//                 );
+                percentElement.classList.add(
+                    "loss"
+                );
 
-//             }
+            }
 
-//         }
+        }
 
 
-//         if (progress < 1) {
+        if (progress < 1) {
 
-//             requestAnimationFrame(
-//                 updateCounter
-//             );
+            requestAnimationFrame(
+                updateCounter
+            );
 
-//         } else {
+        } else {
 
-//             /*
-//                Final simulated value.
-//             */
+            /*
+               Final simulated value.
+            */
 
-//             gainElement.textContent =
-//                 "+$" +
-//                 formatCurrency(
-//                     targetGain
-//                 );
+            gainElement.textContent =
+                "+$" +
+                formatCurrency(
+                    targetGain
+                );
 
 
-//             if (percentElement) {
+            if (percentElement) {
 
-//                 const sign =
-//                     targetPercent >= 0
-//                         ? "+"
-//                         : "";
+                const sign =
+                    targetPercent >= 0
+                        ? "+"
+                        : "";
 
-//                 percentElement.textContent =
-//                     sign +
-//                     targetPercent.toFixed(2) +
-//                     "%";
+                percentElement.textContent =
+                    sign +
+                    targetPercent.toFixed(2) +
+                    "%";
 
 
-//                 if (targetPercent >= 0) {
+                if (targetPercent >= 0) {
 
-//                     percentElement.classList.remove(
-//                         "loss"
-//                     );
+                    percentElement.classList.remove(
+                        "loss"
+                    );
 
-//                     percentElement.classList.add(
-//                         "profit"
-//                     );
+                    percentElement.classList.add(
+                        "profit"
+                    );
 
-//                 } else {
+                } else {
 
-//                     percentElement.classList.remove(
-//                         "profit"
-//                     );
+                    percentElement.classList.remove(
+                        "profit"
+                    );
 
-//                     percentElement.classList.add(
-//                         "loss"
-//                     );
+                    percentElement.classList.add(
+                        "loss"
+                    );
 
-//                 }
+                }
 
-//             }
+            }
 
-//         }
+        }
 
-//     }
+    }
 
 
-//     requestAnimationFrame(
-//         updateCounter
-//     );
+    requestAnimationFrame(
+        updateCounter
+    );
 
-// }
+}
 
 
 /* =========================================================
@@ -1788,100 +1788,100 @@ function formatCurrency(value) {
    This does NOT represent real investment performance.
 ========================================================= */
 
-function animateDemoGain() {
-    const gainElement = document.getElementById("dashboardGain");
-    const percentElement = document.getElementById("dashboardGainPercent");
+// function animateDemoGain() {
+//     const gainElement = document.getElementById("dashboardGain");
+//     const percentElement = document.getElementById("dashboardGainPercent");
 
-    if (!gainElement) return;
+//     if (!gainElement) return;
 
-    const baseGain = Number(NEXAVAULT_DEMO_ACCOUNT.portfolio.gain) || 0;
-    const basePercent = Number(NEXAVAULT_DEMO_ACCOUNT.portfolio.gainPercent) || 0;
+//     const baseGain = Number(NEXAVAULT_DEMO_ACCOUNT.portfolio.gain) || 0;
+//     const basePercent = Number(NEXAVAULT_DEMO_ACCOUNT.portfolio.gainPercent) || 0;
 
-    // 25% chance of a simulated loss
-    const isLoss = Math.random() < 0.25;
+//     // 25% chance of a simulated loss
+//     const isLoss = Math.random() < 0.25;
 
-    let targetPercent;
+//     let targetPercent;
 
-    if (isLoss) {
-        // Simulated loss between -0.25% and -4.25%
-        targetPercent = -(Math.random() * 4 + 0.25);
-    } else {
-        // Simulated profit between 85% and 115% of the normal gain percentage
-        targetPercent = basePercent * (0.85 + Math.random() * 0.30);
-    }
+//     if (isLoss) {
+//         // Simulated loss between -0.25% and -4.25%
+//         targetPercent = -(Math.random() * 4 + 0.25);
+//     } else {
+//         // Simulated profit between 85% and 115% of the normal gain percentage
+//         targetPercent = basePercent * (0.85 + Math.random() * 0.30);
+//     }
 
-    // Keep dollar gain/loss proportional to the percentage
-    const targetGain = baseGain * (targetPercent / basePercent);
+//     // Keep dollar gain/loss proportional to the percentage
+//     const targetGain = baseGain * (targetPercent / basePercent);
 
-    const duration = 2200;
-    const startTime = performance.now();
+//     const duration = 2200;
+//     const startTime = performance.now();
 
-    function updateCounter(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
+//     function updateCounter(currentTime) {
+//         const elapsed = currentTime - startTime;
+//         const progress = Math.min(elapsed / duration, 1);
 
-        // Smooth animation
-        const easedProgress = 1 - Math.pow(1 - progress, 3);
+//         // Smooth animation
+//         const easedProgress = 1 - Math.pow(1 - progress, 3);
 
-        const currentGain = targetGain * easedProgress;
-        const currentPercent = targetPercent * easedProgress;
+//         const currentGain = targetGain * easedProgress;
+//         const currentPercent = targetPercent * easedProgress;
 
-        // -------------------------
-        // Dollar gain/loss
-        // -------------------------
-        const gainSign = currentGain >= 0 ? "+" : "-";
+//         // -------------------------
+//         // Dollar gain/loss
+//         // -------------------------
+//         const gainSign = currentGain >= 0 ? "+" : "-";
 
-        gainElement.textContent =
-            gainSign + "$" + formatCurrency(Math.abs(currentGain));
+//         gainElement.textContent =
+//             gainSign + "$" + formatCurrency(Math.abs(currentGain));
 
-        // -------------------------
-        // Percentage gain/loss
-        // -------------------------
-        if (percentElement) {
-            const percentSign = currentPercent >= 0 ? "+" : "";
+//         // -------------------------
+//         // Percentage gain/loss
+//         // -------------------------
+//         if (percentElement) {
+//             const percentSign = currentPercent >= 0 ? "+" : "";
 
-            percentElement.textContent =
-                percentSign + currentPercent.toFixed(2) + "%";
+//             percentElement.textContent =
+//                 percentSign + currentPercent.toFixed(2) + "%";
 
-            // Change color
-            if (currentPercent >= 0) {
-                percentElement.classList.remove("loss");
-                percentElement.classList.add("profit");
-            } else {
-                percentElement.classList.remove("profit");
-                percentElement.classList.add("loss");
-            }
-        }
+//             // Change color
+//             if (currentPercent >= 0) {
+//                 percentElement.classList.remove("loss");
+//                 percentElement.classList.add("profit");
+//             } else {
+//                 percentElement.classList.remove("profit");
+//                 percentElement.classList.add("loss");
+//             }
+//         }
 
-        // Continue animation
-        if (progress < 1) {
-            requestAnimationFrame(updateCounter);
-        } else {
+//         // Continue animation
+//         if (progress < 1) {
+//             requestAnimationFrame(updateCounter);
+//         } else {
 
-            const finalGainSign = targetGain >= 0 ? "+" : "-";
+//             const finalGainSign = targetGain >= 0 ? "+" : "-";
 
-            gainElement.textContent =
-                finalGainSign + "$" + formatCurrency(Math.abs(targetGain));
+//             gainElement.textContent =
+//                 finalGainSign + "$" + formatCurrency(Math.abs(targetGain));
 
-            if (percentElement) {
-                const finalPercentSign = targetPercent >= 0 ? "+" : "";
+//             if (percentElement) {
+//                 const finalPercentSign = targetPercent >= 0 ? "+" : "";
 
-                percentElement.textContent =
-                    finalPercentSign + targetPercent.toFixed(2) + "%";
+//                 percentElement.textContent =
+//                     finalPercentSign + targetPercent.toFixed(2) + "%";
 
-                if (targetPercent >= 0) {
-                    percentElement.classList.remove("loss");
-                    percentElement.classList.add("profit");
-                } else {
-                    percentElement.classList.remove("profit");
-                    percentElement.classList.add("loss");
-                }
-            }
-        }
-    }
+//                 if (targetPercent >= 0) {
+//                     percentElement.classList.remove("loss");
+//                     percentElement.classList.add("profit");
+//                 } else {
+//                     percentElement.classList.remove("profit");
+//                     percentElement.classList.add("loss");
+//                 }
+//             }
+//         }
+//     }
 
-    requestAnimationFrame(updateCounter);
-}
+//     requestAnimationFrame(updateCounter);
+// }
 
 
 /* =========================================================
