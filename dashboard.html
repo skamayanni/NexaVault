@@ -74,6 +74,101 @@
             gap: 20px;
         }
 
+        /* =========================================
+           MODAL
+        ========================================= */
+
+        .dashboard-modal {
+            position: fixed;
+
+            inset: 0;
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(0, 0, 0, 0.68);
+
+            backdrop-filter: blur(7px);
+
+            z-index: 200;
+        }
+
+        .dashboard-modal.show {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 440px;
+
+            padding: 28px;
+
+            border: 1px solid rgba(54, 226, 154, 0.18);
+            border-radius: 18px;
+
+            background: #0a1712;
+
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+        }
+
+        .modal-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 18px;
+
+            border-radius: 11px;
+
+            background: rgba(54, 226, 154, 0.08);
+
+            color: var(--green);
+        }
+
+        .modal-box h3 {
+            margin: 0 0 10px;
+
+            font-size: 19px;
+        }
+
+        .modal-box p {
+            margin: 0 0 22px;
+
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        .modal-close {
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid rgba(54, 226, 154, 0.25);
+            border-radius: 9px;
+
+            background: rgba(54, 226, 154, 0.07);
+
+            color: var(--green);
+
+            font-family: inherit;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
         .notification-btn {
             width: 40px;
             height: 40px;
@@ -1053,6 +1148,142 @@
                 display: none;
             }
         }
+
+        /* =========================================
+           ACTIVITY
+        ========================================= */
+
+        .activity-card {
+            margin-bottom: 20px;
+        }
+
+        .activity-list {
+            padding: 5px 20px;
+        }
+
+        .activity-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 16px 0;
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 34px;
+            height: 34px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex: 0 0 auto;
+
+            border-radius: 9px;
+
+            background: rgba(54, 226, 154, 0.07);
+
+            color: var(--green);
+
+            font-size: 12px;
+        }
+
+        .activity-info {
+            flex: 1;
+        }
+
+        .activity-info strong {
+            display: block;
+
+            margin-bottom: 4px;
+
+            color: #cbd7d2;
+
+            font-size: 11px;
+        }
+
+        .activity-info span {
+            color: #63756d;
+
+            font-size: 9px;
+        }
+
+        .activity-amount {
+            color: #d8e2dd;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            text-align: right;
+        }
+
+        .activity-status {
+            display: block;
+
+            margin-top: 4px;
+
+            color: #62736c;
+
+            font-size: 8px;
+            font-weight: 500;
+        }
+
+        /* =========================================
+           ACTIONS
+        ========================================= */
+
+        .quick-actions {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 10px;
+
+            margin-bottom: 20px;
+        }
+
+        .quick-action {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            min-height: 45px;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            background: rgba(255, 255, 255, 0.02);
+
+            color: #a8b7b0;
+
+            font-family: inherit;
+
+            font-size: 11px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .quick-action:hover {
+            border-color: rgba(54, 226, 154, 0.25);
+
+            background: rgba(54, 226, 154, 0.05);
+
+            color: var(--green);
+        }
     </style>
 </head>
 
@@ -1114,12 +1345,17 @@
                 <span>Dashboard</span>
             </a>
 
-            <a href="markets.html" class="sidebar-link">
-                <span class="sidebar-icon">⌁</span>
-                <span>Markets</span>
+            <a href=" " class="sidebar-link demo-link">
+                <span class="sidebar-icon"> ＋</span>
+                <span>Deposit</span>
             </a>
 
-            <a href="#" class="sidebar-link">
+            <a href=" " class="sidebar-link demo-link" data-title="Transactions">
+                <span class="sidebar-icon"> ↓ </span>
+                Withdrawal
+            </a>
+
+            <a href="#activity" class="sidebar-link">
                 <span class="sidebar-icon">↔</span>
                 <span>Transactions</span>
             </a>
@@ -1133,14 +1369,14 @@
                 Account
             </div>
 
+            <a href="#overview" class="sidebar-link">
+                <span class="sidebar-icon">⌁</span>
+                <span>Markets</span>
+            </a>
+
             <a href="plans.html" class="sidebar-link">
                 <span class="sidebar-icon">◇</span>
                 <span>Deposit Plans</span>
-            </a>
-
-            <a href="#" class="sidebar-link">
-                <span class="sidebar-icon">♢</span>
-                <span>Security</span>
             </a>
 
             <a href="#" class="sidebar-link">
@@ -1208,7 +1444,7 @@
             <div class="demo-indicator">
 
                 <span class="demo-badge">
-                    <span class="demo-dot"></span>
+                    <span class="live-dot"></span>
                     Live Trading
                 </span>
 
@@ -1902,7 +2138,7 @@
         <!-- LIVE CRYPTO MARKET OVERVIEW -->
         <div class="crypto-market-card">
 
-            <div class="crypto-market-header">
+            <div class="crypto-market-header" id="overview">
 
                 <div>
                     <h3>Live Market Overview</h3>
@@ -1942,6 +2178,7 @@
             </div>
 
         </div>
+        <br>
 
         <style>
             /* ==========================================
@@ -2365,6 +2602,156 @@
         </style>
 
         <!-- =================================
+                         ACTIVITY
+                    ================================== -->
+
+        <!-- <section class="dashboard-card activity-card" id="activity">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Recent Activity</h2>
+
+                    <p class="welcome-label">
+                        Transactions
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="activity-list">
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon">
+                        ₿
+                    </div>
+
+                    <div class="activity-info">
+
+                        <strong>
+                            Bitcoin Allocation
+                        </strong>
+
+                        <span>
+                            portfolio allocation
+                        </span>
+
+                    </div>
+
+                    <div class="activity-amount">
+
+                        -$1,109,200.00
+
+                        <span class="activity-status">
+                            Demo
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon">
+                        Ξ
+                    </div>
+
+                    <div class="activity-info">
+
+                        <strong>
+                            Ethereum Allocation
+                        </strong>
+
+                        <span>
+                            portfolio allocation
+                        </span>
+
+                    </div>
+
+                    <div class="activity-amount">
+
+                        -$175000.00
+
+                        <span class="activity-status">
+                            Demo
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon">
+                        +
+                    </div>
+
+                    <div class="activity-info">
+
+                        <strong>
+                            Deposit Bonus
+                        </strong>
+
+                        <span>
+                            transaction · 19-02-2026
+                        </span>
+
+                    </div>
+
+                    <div class="activity-amount">
+
+                        +$101,500.99
+
+                        <span class="activity-status">
+                            Credit
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                    <div class="activity-icon">
+                        +
+                    </div>
+
+                    <div class="activity-info">
+
+                        <strong>
+                            Account Credit
+                        </strong>
+
+                        <span>
+                            deposit · 18-02-2026
+                        </span>
+
+                    </div>
+
+                    <div class="activity-amount">
+
+                        +$1,600,000.00
+
+                        <span class="activity-status">
+                            Credit
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section> -->
+
+        <!-- =================================
                          FOOTER NOTE
                     ================================== -->
 
@@ -2379,6 +2766,127 @@
         </div>
 
     </main>
+
+    <!-- =========================================
+         MODAL
+    ========================================= -->
+
+    <div class="dashboard-modal" id="dashboardModal">
+
+        <div class="modal-box">
+
+            <div class="modal-icon">
+                ◈
+            </div>
+
+            <h3 id="modalTitle">
+                Demo Feature
+            </h3>
+
+            <p id="modalMessage">
+                This feature is currently on hold.
+                You Cannot Perform this action until preferred maturity date.
+            </p>
+
+            <button class="modal-close" id="modalClose">
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+    <script>
+        /* -----------------------------------------
+          SIDEBAR
+       ----------------------------------------- */
+
+        const dashboardSidebar =
+            document.getElementById("dashboardSidebar");
+
+        const dashboardMenuButton =
+            document.getElementById("dashboardMenuButton");
+
+        if (dashboardMenuButton) {
+
+            dashboardMenuButton.addEventListener("click", () => {
+
+                dashboardSidebar.classList.toggle("show");
+
+            });
+
+        }
+
+
+        /* -----------------------------------------
+           MODAL
+        ----------------------------------------- */
+
+        const dashboardModal =
+            document.getElementById("dashboardModal");
+
+        const modalTitle =
+            document.getElementById("modalTitle");
+
+        const modalClose =
+            document.getElementById("modalClose");
+
+
+        function openDemoModal(title) {
+
+            modalTitle.textContent = title;
+
+            dashboardModal.classList.add("show");
+
+        }
+
+
+        document.querySelectorAll(".demo-action").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                openDemoModal(button.dataset.title);
+
+            });
+
+        });
+
+
+        document.querySelectorAll(".demo-link").forEach(link => {
+
+            link.addEventListener("click", event => {
+
+                event.preventDefault();
+
+                openDemoModal(link.dataset.title);
+
+            });
+
+        });
+
+
+        if (modalClose) {
+
+            modalClose.addEventListener("click", () => {
+
+                dashboardModal.classList.remove("show");
+
+            });
+
+        }
+
+
+        dashboardModal.addEventListener("click", event => {
+
+            if (event.target === dashboardModal) {
+
+                dashboardModal.classList.remove("show");
+
+            }
+
+        });
+
+    </script>
 
 
     <!-- =====================================================
@@ -2640,7 +3148,7 @@
             try {
 
                 const response = await fetch(
-                    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,tether,binancecoin,solana&order=market_cap_desc&sparkline=false"
+                    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum,tether,binancecoin,ripple,solana&order=market_cap_desc&sparkline=false"
                 );
 
                 if (!response.ok) {
@@ -2655,6 +3163,7 @@
                     "ethereum",
                     "tether",
                     "binancecoin",
+                    "ripple",
                     "solana"
                 ];
 
