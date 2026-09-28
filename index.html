@@ -50,36 +50,30 @@
             padding: 150px 0 90px;
 
             background:
-                radial-gradient(circle at 75% 30%,
-                    rgba(54, 226, 154, 0.10),
-                    transparent 30%),
-                radial-gradient(circle at 15% 80%,
-                    rgba(54, 226, 154, 0.06),
-                    transparent 25%),
-                var(--bg);
+                url("./images/a_darke_futuristic_hero.png") center / cover no-repeat;
         }
 
-
+        /* Dark overlay over the image */
         .hero::before {
             content: "";
-
             position: absolute;
+            inset: 0;
 
-            width: 520px;
-            height: 520px;
+            background:
+                linear-gradient(90deg,
+                    rgba(7, 16, 13, 0.82) 0%,
+                    rgba(7, 16, 13, 0.68) 40%,
+                    rgba(7, 16, 13, 0.45) 70%,
+                    rgba(7, 16, 13, 0.55) 100%);
 
-            right: -180px;
-            top: 100px;
-
-            border-radius: 50%;
-
-            border: 1px solid rgba(54, 226, 154, 0.07);
-
-            box-shadow:
-                0 0 0 80px rgba(54, 226, 154, 0.015),
-                0 0 0 160px rgba(54, 226, 154, 0.01);
-
+            z-index: 1;
             pointer-events: none;
+        }
+
+        /* Keep all hero content above the overlay */
+        .hero>* {
+            position: relative;
+            z-index: 2;
         }
 
 
